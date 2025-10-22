@@ -1,4 +1,4 @@
-#BFB Group Project Final
+# BFB Group Project Final
 
 A simple web-based inventory management system built with HTML, Bootstrap, and SQLite.
 
