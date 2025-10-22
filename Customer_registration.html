@@ -9,7 +9,12 @@
     <body>
         <header class="site-header">
             <div class="header-container">
-                <a href="Home.html" class="logo">GrocerEase</a>
+                <a href="Home.html" class="logo">
+                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M7 4h-2a1 1 0 0 0 0 2h1.22l1.6 6.4a2 2 0 0 0 1.95 1.45h7.48a1 1 0 0 0 .97-.76l1.2-5.2a1 1 0 0 0-.97-1.24H8.7L8.2 4.2A1 1 0 0 0 7 4zm0 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                    </svg>
+                    <span class="logo-text">GrocerEase</span>
+                </a>
                 <nav class="nav-buttons">
                     <a href="Customer_login.html" class="nav-btn nav-btn--secondary">Login</a>
                     <a href="Customer_registration.html" class="nav-btn nav-btn--primary">Register</a>
@@ -19,6 +24,23 @@
         </header>
 
         <main>
+            <section class="page-hero">
+                <div class="hero-content">
+                    <div class="hero-copy">
+                        <h1>Join GrocerEase</h1>
+                        <p class="lead">Create an account to receive personalised recommendations and faster checkout.</p>
+                    </div>
+                    <div class="hero-illustration" aria-hidden="true">
+                        <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" role="img">
+                            <rect x="12" y="18" width="96" height="54" rx="8" fill="#fbfdff" stroke="#dbeafe"/>
+                            <circle cx="40" cy="45" r="10" fill="#60a5fa"/>
+                            <rect x="60" y="36" width="36" height="6" rx="3" fill="#94a3b8"/>
+                            <rect x="60" y="48" width="28" height="6" rx="3" fill="#94a3b8"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
             <h1>Customer Registration</h1>
             <p>Please enter your information to create a new account.</p>
             <section>
@@ -26,20 +48,30 @@
                 <p>(This is a placeholder page for customer login. In a real application, this would include authentication mechanisms.)</p>
 
                 <form action="Customer.html" method="get">
-                    <label for="name">Name</label>
-                    <input type="text" id="customer-id" name="customer-id" required>
+                    <div class="form-field">
+                        <input type="text" id="customer-id" name="customer-id" placeholder=" " required>
+                        <label for="customer-id">Name</label>
+                    </div>
 
-                    <label for="surname">Surname</label>
-                    <input type="text" id="surname" name="surname" required>
+                    <div class="form-field">
+                        <input type="text" id="surname" name="surname" placeholder=" " required>
+                        <label for="surname">Surname</label>
+                    </div>
 
-                    <label for ="email">Email</label>
-                    <input type="text" id="email" name="email" required>
+                    <div class="form-field">
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email">Email</label>
+                    </div>
 
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <div class="form-field">
+                        <input type="password" id="password" name="password" placeholder=" " required>
+                        <label for="password">Password</label>
+                    </div>
 
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <div class="form-field">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder=" " required>
+                        <label for="confirm-password">Confirm Password</label>
+                    </div>
 
                     <div class="controls">
                         <button type="submit">Proceed to Customer Portal</button>
@@ -54,11 +86,11 @@
 
         <footer>
             <div class="footer-content">
-                <p class="copyright">&copy; 2025 — Example Company</p>
+                <p class="copyright">&copy; 2025 GrocerEase</p>
                 <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Contact Us</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="contact.html">Contact Us</a>
                 </div>
             </div>
         </footer>

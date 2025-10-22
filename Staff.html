@@ -9,7 +9,12 @@
     <body>
         <header class="site-header">
             <div class="header-container">
-                <a href="Home.html" class="logo">GrocerEase</a>
+                <a href="Home.html" class="logo">
+                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M7 4h-2a1 1 0 0 0 0 2h1.22l1.6 6.4a2 2 0 0 0 1.95 1.45h7.48a1 1 0 0 0 .97-.76l1.2-5.2a1 1 0 0 0-.97-1.24H8.7L8.2 4.2A1 1 0 0 0 7 4zm0 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                    </svg>
+                    <span class="logo-text">GrocerEase</span>
+                </a>
                 <nav class="nav-buttons">
                     <a href="inventory.html" class="nav-btn nav-btn--secondary">Inventory</a>
                     <a href="Home.html" class="nav-btn nav-btn--secondary">Logout</a>
@@ -18,7 +23,23 @@
         </header>
 
         <main>
-            <h1>Staff Dashboard</h1>
+            <section class="page-hero">
+                <div class="hero-content">
+                    <div class="hero-copy">
+                        <h1>Staff Dashboard</h1>
+                        <p class="lead">Quick tools to manage inventory, process orders and help customers efficiently.</p>
+                    </div>
+                    <div class="hero-illustration" aria-hidden="true">
+                        <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" role="img">
+                            <rect x="8" y="20" width="18" height="44" rx="3" fill="#60a5fa" />
+                            <rect x="34" y="10" width="18" height="54" rx="3" fill="#34d399" />
+                            <rect x="60" y="30" width="18" height="34" rx="3" fill="#fbbf24" />
+                            <rect x="86" y="4" width="18" height="60" rx="3" fill="#f97316" />
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
             <p>Staff sign in to manage orders, inventory and customer issues.</p>
             <section>
                 <h2>Update Inventory</h2>
@@ -66,11 +87,11 @@
 
         <footer>
             <div class="footer-content">
-                <p class="copyright">&copy; 2025 — Example Company</p>
+                <p class="copyright">&copy; 2025 GrocerEase</p>
                 <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Contact Us</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="contact.html">Contact Us</a>
                 </div>
             </div>
         </footer>
