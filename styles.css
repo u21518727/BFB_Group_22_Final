@@ -420,6 +420,9 @@ button:active {
 .btn--register{background:#4b5153}
 .btn--register:hover{background:#374045}
 
+.btn--new{background:#ffa114}
+.btn--new:hover{background:#fb923c}
+
 /* Controls spacing for form buttons */
 .controls{margin-top:0.75rem}
 
@@ -549,3 +552,4 @@ footer .copyright {
 
 /* Accessibility helpers */
 a:focus, button:focus, input:focus, textarea:focus{outline-offset:2px}
+
