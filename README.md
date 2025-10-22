@@ -26,57 +26,96 @@ A simple web-based inventory management system built with HTML, Bootstrap, and S
 
 ```mermaid
 erDiagram
-    product_categories {
+    %% LOOKUPS
+    categories {
         INTEGER category_id PK
-        TEXT category_name UK
-        TEXT category_description
-        DATETIME created_at
+        TEXT name UK
     }
-    
-    vendors {
-        INTEGER vendor_id PK
+
+    %% USERS
+    customers {
+        INTEGER customer_id PK
         TEXT first_name
         TEXT last_name
-        TEXT business_name
         TEXT email UK
-        TEXT phone
-        TEXT address
-        TEXT password
-        DATETIME created_at
-        DATETIME updated_at
-    }
-    
-    products {
-        INTEGER product_id PK
-        TEXT sku UK
-        TEXT product_name
-        INTEGER category_id FK
-        INTEGER quantity
-        REAL price
-        TEXT description
-        TEXT supplier
-        INTEGER min_stock_level
-        INTEGER max_stock_level
-        DATETIME created_at
-        DATETIME updated_at
-    }
-    
-    stock_updates {
-        INTEGER update_id PK
-        INTEGER product_id FK
-        INTEGER vendor_id FK
-        TEXT update_type
-        INTEGER quantity_change
-        INTEGER old_quantity
-        INTEGER new_quantity
-        TEXT reason
-        TEXT notes
+        TEXT password_hash
         DATETIME created_at
     }
 
-    product_categories ||--o{ products : "categorizes"
-    vendors ||--o{ stock_updates : "performs"
-    products ||--o{ stock_updates : "tracks"
+    staff {
+        INTEGER staff_id PK
+        TEXT employee_code UK
+        TEXT first_name
+        TEXT last_name
+        TEXT email UK
+        TEXT phone
+        TEXT department
+        TEXT position
+        TEXT password_hash
+        INTEGER is_active
+        DATETIME created_at
+    }
+
+    %% PRODUCTS / INVENTORY
+    inventory {
+        INTEGER product_id PK
+        TEXT sku UK
+        TEXT name
+        INTEGER category_id FK
+        TEXT location
+        INTEGER qty_on_hand
+        INTEGER reorder_level
+        INTEGER reorder_qty
+        REAL unit_price
+        DATETIME created_at
+        DATETIME updated_at
+    }
+
+    %% CUSTOMER ORDERS (HEADER + ITEMS)
+    customer_orders {
+        INTEGER order_id PK
+        INTEGER customer_id FK
+        TEXT status
+        REAL total_amount
+        DATETIME created_at
+        DATETIME updated_at
+    }
+
+    customer_order_items {
+        INTEGER order_item_id PK
+        INTEGER order_id FK
+        INTEGER product_id FK
+        INTEGER qty
+        REAL unit_price
+    }
+
+    %% STAFF INVENTORY ORDERS (HEADER + ITEMS)
+    inventory_orders_staff {
+        INTEGER inv_order_id PK
+        INTEGER staff_id FK
+        TEXT status
+        TEXT notes
+        DATETIME created_at
+        DATETIME updated_at
+    }
+
+    inventory_order_items {
+        INTEGER inv_order_item_id PK
+        INTEGER inv_order_id FK
+        INTEGER product_id FK
+        INTEGER qty
+        TEXT target_location
+    }
+
+    %% RELATIONSHIPS
+    categories ||--o{ inventory : "categorizes"
+    customers  ||--o{ customer_orders : "places"
+    customer_orders ||--o{ customer_order_items : "contains"
+    inventory  ||--o{ customer_order_items : "is ordered"
+    staff      ||--o{ inventory_orders_staff : "raises"
+    inventory_orders_staff ||--o{ inventory_order_items : "lists"
+    inventory  ||--o{ inventory_order_items : "to restock"
+
 ```
 
 The database includes the following tables:
