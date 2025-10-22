@@ -1,0 +1,201 @@
+/* styles.css - shared site stylesheet for the Templates folder */
+:root{
+  --bg:#f7fafc;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#0b69ff;
+  --accent-700:#0854cc;
+  --border: #e6e9ef;
+  --radius:10px;
+  --max-width:1100px;
+  --container-padding:20px;
+  --shadow: 0 6px 18px rgba(16,24,40,0.06);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Main navigation header */
+.site-header {
+    background: var(--header-bg);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.nav-btn--primary {
+    background: var(--accent);
+    color: white;
+}
+
+.nav-btn--primary:hover {
+    background: var(--accent-700);
+}
+
+.nav-btn--secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.nav-btn--secondary:hover {
+    background: rgba(11,105,255,0.1);
+}
+
+main {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    padding: 0 var(--container-padding);
+}
+
+/* Inventory header layout: title at left, actions (e.g., Download Pdf) at right */
+.inventory-header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.inventory-title h1{margin:0}
+.inventory-actions{display:flex;align-items:center;gap:.5rem}
+
+
+header h1{margin:0 0 .25rem;font-size:1.75rem}
+header p{margin:0 0 .75rem;color:var(--muted)}
+
+nav a{color:var(--accent);text-decoration:none;margin-right:1rem;font-weight:600}
+nav a:hover{color:var(--accent-700);text-decoration:underline}
+
+/* Cards / choices */
+.choices{display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;width:260px;box-shadow:var(--shadow)}
+.card h2{margin:0 0 .5rem;font-size:1.1rem}
+.card p{margin:.25rem 0;color:var(--muted)}
+.card a{display:inline-block;margin-top:.5rem;color:var(--accent)}
+
+/* Forms */
+form{margin-top:1rem}
+label{display:block;margin-bottom:.35rem;font-weight:600}
+input,textarea,select,button{
+  font:inherit;
+}
+input[type="text"], input[type="number"], textarea{
+  padding:.5rem .6rem;border:1px solid var(--border);border-radius:8px;background:#fff;display:block;margin-bottom:.75rem;box-shadow:none;
+}
+input:focus,textarea:focus,select:focus{outline:3px solid rgba(11,105,255,0.12);border-color:var(--accent)}
+
+button{background:var(--accent);color:#fff;border:none;padding:.55rem .85rem;border-radius:8px;cursor:pointer;font-weight:700}
+button:hover{background:var(--accent-700)}
+button:active{transform:translateY(1px)}
+
+/* Buttons as links (use on anchors) */
+.btn{display:inline-block;text-decoration:none;padding:.55rem .85rem;border-radius:8px;font-weight:700;color:#fff;background:var(--accent)}
+.btn:hover{background:var(--accent-700)}
+.btn:focus{outline:3px solid rgba(11,105,255,0.12);outline-offset:2px}
+
+/* Danger / red variant */
+.btn--danger{background:#e11d48}
+.btn--danger:hover{background:#be123c}
+
+.btn--goodnews{background:#10b981}
+.btn--goodnews:hover{background:#059669}
+
+.btn--inventroy{background:#8b5cf6}
+.btn--inventroy:hover{background:#7c3aed}
+
+.btn--info{background:#ffbb27}
+.btn--info:hover{background:#f59e0b}
+
+.btn--register{background:#4b5153}
+.btn--register:hover{background:#374045}
+
+/* Controls spacing for form buttons */
+.controls{margin-top:0.75rem}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  padding: 2rem var(--container-padding);
+  border-top: 1px solid var(--border);
+  background-color: var(--card);
+}
+
+footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+footer .footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+footer .footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+footer .footer-links a:hover {
+  color: var(--accent);
+}
+
+footer .copyright {
+  color: var(--muted);
+  margin: 0;
+}
+
+.back-to-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Responsiveness */
+@media (max-width:720px){
+  .choices{flex-direction:column}
+  .card{width:100%}
+  header, main, footer{padding:16px}
+  .inventory-header{flex-direction:column;align-items:flex-start}
+  .inventory-actions{width:100%;display:flex;justify-content:flex-start;margin-top:.5rem}
+}
+
+/* Accessibility helpers */
+a:focus, button:focus, input:focus, textarea:focus{outline-offset:2px}

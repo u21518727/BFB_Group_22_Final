@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Customer</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="Home.html" class="logo">GrocerEase</a>
+                <nav class="nav-buttons">
+                    <a href="Customer.html" class="nav-btn nav-btn--primary">My Account</a>
+                    <a href="Home.html" class="nav-btn nav-btn--secondary">Logout</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <h1>Customer Portal</h1>
+            <p>Welcome, customer. From here you can submit grocery items, view products and check order status.</p>
+            <section>
+                <h2>Submit grocery items</h2>
+                <p>List each grocery item on a new line. This form posts to a placeholder endpoint.</p>
+                <form action="submit_groceries.html" method="post">
+                    <label for="items">Grocery Items</label>
+                    <textarea id="items" name="items" rows="6" required></textarea>
+                    <p><button type="submit">Submit</button></p>
+                </form>
+            </section>
+
+            <section>
+                <h2>Your Orders</h2>
+                <p>(Orders and order history would be shown here.)</p>
+            </section>
+        </main>
+
+        <div class="back-to-home">
+            <a class="btn btn--danger" href="Home.html">Back to Home</a>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 — Example Company</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

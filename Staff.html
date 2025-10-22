@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Staff</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="Home.html" class="logo">GrocerEase</a>
+                <nav class="nav-buttons">
+                    <a href="inventory.html" class="nav-btn nav-btn--secondary">Inventory</a>
+                    <a href="Home.html" class="nav-btn nav-btn--secondary">Logout</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <h1>Staff Dashboard</h1>
+            <p>Staff sign in to manage orders, inventory and customer issues.</p>
+            <section>
+                <h2>Update Inventory</h2>
+                <p>This form is a simple placeholder for updating inventory items.</p>
+                <form action="submit_inventory.html" method="post">
+                    <label for="product">Product name or ID</label>
+                    <input id="product" name="product" type="text" required />
+
+                    <label for="Categorie">Categorie</label>
+                    <select id="Categorie" name="Categorie" required>
+                        <option value="">-- Select a category --</option>
+                        <option value="Meat">Meat</option>
+                        <option values="Poultry">Poultry</option>
+                        <option value="Fish">Fish</option>
+                        <option value="Produce">Produce</option>
+                        <option value="Dairy">Dairy</option>
+                        <option value="Bakery">Bakery</option>
+                        <option value="Starch">Starch</option>
+                        <option value="beverages">Beverages</option>
+                        <option value="cleaning">Cleaning Supplies</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="qty">Quantity</label>
+                    <input id="qty" name="qty" type="number" min="0" required />
+
+                    <label for="Location">Location</label>
+                    <input id="Location" name="Location" type="text" required />
+
+                    <div class="controls">
+                        <button type="submit">Update Inventory</button>
+                    </div>
+                </form>
+            </section>
+
+            <section>
+               <p><a class="btn btn--goodnews" href="Inventory.html">View Inventory</a></p>
+            </section>
+        </main>
+
+        <div class="back-to-home">
+            <a class="btn btn--danger" href="Home.html">Back to Home</a>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 — Example Company</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Staff Registration</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="Home.html" class="logo">GrocerEase</a>
+                <nav class="nav-buttons">
+                    <a href="Verification.html" class="nav-btn nav-btn--secondary">Login</a>
+                    <a href="Staff_registration.html" class="nav-btn nav-btn--primary">Register</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <h1>Staff Registration</h1>
+                <p>Complete the form below to register as a staff member. All fields are required.</p>
+
+                <form action="Staff.html" method="post">
+                    <label for="employee-id">Employee ID</label>
+                    <input type="text" id="employee-id" name="employee-id" required>
+
+                    <label for="name">First Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="surname">Last Name</label>
+                    <input type="text" id="surname" name="surname" required>
+
+                    <label for="email">Work Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="department">Department</label>
+                    <select id="department" name="department" required>
+                        <option value="">-- Select Department --</option>
+                        <option value="inventory">Inventory Management</option>
+                        <option value="sales">Sales</option>
+                        <option value="customer-service">Customer Service</option>
+                        <option value="logistics">Logistics</option>
+                        <option value="admin">Administration</option>
+                    </select>
+
+                    <label for="position">Position</label>
+                    <input type="text" id="position" name="position" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+
+                    <div class="controls">
+                        <button type="submit">Register as Staff Member</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <div class="back-to-home">
+            <a class="btn btn--danger" href="Home.html">Back to Home</a>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 — Example Company</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Customer Registration</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="Home.html" class="logo">GrocerEase</a>
+                <nav class="nav-buttons">
+                    <a href="Customer_login.html" class="nav-btn nav-btn--secondary">Login</a>
+                    <a href="Customer_registration.html" class="nav-btn nav-btn--primary">Register</a>
+                    <a href="Verification.html" class="nav-btn nav-btn--secondary">Staff Portal</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <h1>Customer Registration</h1>
+            <p>Please enter your information to create a new account.</p>
+            <section>
+                <h2>Login to your customer account</h2>
+                <p>(This is a placeholder page for customer login. In a real application, this would include authentication mechanisms.)</p>
+
+                <form action="Customer.html" method="get">
+                    <label for="name">Name</label>
+                    <input type="text" id="customer-id" name="customer-id" required>
+
+                    <label for="surname">Surname</label>
+                    <input type="text" id="surname" name="surname" required>
+
+                    <label for ="email">Email</label>
+                    <input type="text" id="email" name="email" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+
+                    <div class="controls">
+                        <button type="submit">Proceed to Customer Portal</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <div class="back-to-home">
+            <a class="btn btn--danger" href="Home.html">Back to Home</a>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 — Example Company</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+    </body>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Staff Verification</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="Home.html" class="logo">GrocerEase</a>
+                <nav class="nav-buttons">
+                    <a href="Verification.html" class="nav-btn nav-btn--primary">Login</a>
+                    <a href="Staff_registration.html" class="nav-btn nav-btn--secondary">Register</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <h1>Staff Verification</h1>
+            <p>Please verify your staff credentials to access the dashboard.</p>
+            <section>
+                <h2>Verify you are a staff member</h2>
+                <p>(This is a placeholder page for staff verification. In a real application, this would include authentication mechanisms.)</p>
+
+                <form action="Staff.html" method="get">
+                    <label for="staff-id">Staff ID</label>
+                    <input type="text" id="staff-id" name="staff-id" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <div class="controls">
+                        <button type="submit">Proceed to Staff Dashboard</button>
+                    </div>
+                </form>
+
+                <div style="margin-top: 1.5rem;">
+                    <p>New staff member? </p>
+                    <p><a class="btn btn--register" href="Staff_registration.html">Register here</a></p>
+                </div>
+            </section>
+        </main>
+
+        <div class="back-to-home">
+            <a class="btn btn--danger" href="Home.html">Back to Home</a>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 — Example Company</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
