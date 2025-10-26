@@ -5,11 +5,15 @@ CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
 
 ## Features
 
-- **Dashboard**: Overview of inventory statistics and recent activity
-- **Product Management**: Add, view, and update product information
-- **Stock Tracking**: Update stock levels with detailed history
-- **Vendor Management**: Login and registration system for vendors
-- **Category Management**: Organize products by categories
+- **Home**: Overview of our system GrocerEase and indicate to sign in/up as customer or staff.
+-**Customer Login**:This is a placeholder page to create an account to receive personalised recommendations and faster checkout.
+-**Customer Registration**:This is a placeholder page for customer login. In a real application, this would include authentication mechanisms.
+-**Customer Portal**:From here you can submit grocery items, view products and check order status.
+-**Staff Verification**:This is a placeholder page for staff verification. In a real application, this would include authentication mechanisms.
+-**Staff Dashboard**:Quick tools to manage inventory, process orders and help customers efficiently. This form is a simple placeholder for updating inventory items.
+-**Inventory Overview**:Live counts and quick actions restock alerts highlight low stock automatically.
+-**Add new Inventory**: Use the form to add a new product and the details of the product to the inventory.
+-**Other**:-Contact-Privacy policy-Terms of service
 
 ## Database Setup
 
