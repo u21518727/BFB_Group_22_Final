@@ -30,96 +30,100 @@ CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
 ### Entity Relationship Diagram (ERD)
 
 ```mermaid
-erDiagram
-    %% LOOKUPS
-    categories {
-        INTEGER category_id PK
-        TEXT name UK
-    }
 
-    %% USERS
+erDiagram
     customers {
         INTEGER customer_id PK
         TEXT first_name
         TEXT last_name
         TEXT email UK
+        TEXT home_location
         TEXT password_hash
         DATETIME created_at
+        DATETIME updated_at
     }
 
-    staff {
+    staff_members {
         INTEGER staff_id PK
-        TEXT employee_code UK
-        TEXT first_name
-        TEXT last_name
-        TEXT email UK
-        TEXT phone
-        TEXT department
-        TEXT position
-        TEXT password_hash
-        INTEGER is_active
-        DATETIME created_at
-    }
-
-    %% PRODUCTS / INVENTORY
-    inventory {
-        INTEGER product_id PK
-        TEXT sku UK
+        TEXT staff_code UK
         TEXT name
+        TEXT password_hash
+        DATETIME created_at
+        DATETIME updated_at
+    }
+
+    product_categories {
+        INTEGER category_id PK
+        TEXT category_name UK
+        TEXT category_description
+        DATETIME created_at
+    }
+
+    products {
+        INTEGER product_id PK
+        TEXT product_name
+        TEXT product_code UK
         INTEGER category_id FK
-        TEXT location
-        INTEGER qty_on_hand
-        INTEGER reorder_level
-        INTEGER reorder_qty
-        REAL unit_price
+        INTEGER min_quantity
+        INTEGER max_quantity
         DATETIME created_at
         DATETIME updated_at
     }
 
-    %% CUSTOMER ORDERS (HEADER + ITEMS)
-    customer_orders {
-        INTEGER order_id PK
-        INTEGER customer_id FK
-        TEXT status
-        REAL total_amount
+    inventory_locations {
+        INTEGER location_id PK
+        TEXT location_name UK
+        TEXT description
         DATETIME created_at
-        DATETIME updated_at
     }
 
-    customer_order_items {
-        INTEGER order_item_id PK
-        INTEGER order_id FK
+    inventory_levels {
+        INTEGER level_id PK
         INTEGER product_id FK
-        INTEGER qty
-        REAL unit_price
+        INTEGER location_id FK
+        INTEGER quantity_on_hand
+        DATETIME last_counted_at
     }
 
-    %% STAFF INVENTORY ORDERS (HEADER + ITEMS)
-    inventory_orders_staff {
-        INTEGER inv_order_id PK
+    inventory_updates {
+        INTEGER update_id PK
+        INTEGER product_id FK
         INTEGER staff_id FK
-        TEXT status
+        INTEGER location_id FK
+        INTEGER quantity_change
+        TEXT reason
         TEXT notes
         DATETIME created_at
-        DATETIME updated_at
     }
 
-    inventory_order_items {
-        INTEGER inv_order_item_id PK
-        INTEGER inv_order_id FK
+    grocery_requests {
+        INTEGER request_id PK
+        INTEGER customer_id FK
+        TEXT current_location
+        TEXT status
+        DATETIME created_at
+    }
+
+    grocery_request_items {
+        INTEGER request_item_id PK
+        INTEGER request_id FK
         INTEGER product_id FK
-        INTEGER qty
-        TEXT target_location
+        TEXT item_text
+        INTEGER quantity
     }
 
-    %% RELATIONSHIPS
-    categories ||--o{ inventory : "categorizes"
-    customers  ||--o{ customer_orders : "places"
-    customer_orders ||--o{ customer_order_items : "contains"
-    inventory  ||--o{ customer_order_items : "is ordered"
-    staff      ||--o{ inventory_orders_staff : "raises"
-    inventory_orders_staff ||--o{ inventory_order_items : "lists"
-    inventory  ||--o{ inventory_order_items : "to restock"
+    %% Relationships (mirroring your UI flow)
+    product_categories ||--o{ products : "categorizes"
+    products ||--o{ inventory_levels : "stocked"
+    inventory_locations ||--o{ inventory_levels : "at"
+
+    staff_members ||--o{ inventory_updates : "performs"
+    products ||--o{ inventory_updates : "updates"
+    inventory_locations ||--o{ inventory_updates : "at"
+
+    customers ||--o{ grocery_requests : "creates"
+    grocery_requests ||--o{ grocery_request_items : "contains"
+    products ||--o{ grocery_request_items : "matches(optional)"
 
 ```
 
