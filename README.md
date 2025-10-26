@@ -45,7 +45,7 @@ erDiagram
 
     staff_members {
         INTEGER staff_id PK
-        TEXT staff_login_id UK  // "Staff ID" entered on verification
+        TEXT staff_login_id UK  
         TEXT name
         TEXT password_hash
         DATETIME created_at
@@ -61,7 +61,7 @@ erDiagram
 
     products {
         INTEGER product_id PK
-        TEXT product_code UK     // "Product ID" on Add Product
+        TEXT product_code UK     
         TEXT product_name
         INTEGER category_id FK
         INTEGER min_quantity
@@ -99,17 +99,17 @@ erDiagram
     grocery_orders {
         INTEGER order_id PK
         INTEGER customer_id FK
-        TEXT current_location    // from Customer Portal form
-        TEXT status              // e.g. "submitted","processing"
+        TEXT current_location    
+        TEXT status              
         DATETIME created_at
     }
 
     grocery_order_items {
         INTEGER order_item_id PK
         INTEGER order_id FK
-        INTEGER product_id FK    // optional match if item maps to a catalog product
-        TEXT item_text           // free-text line from textarea
-        INTEGER quantity         // default 1 if not captured
+        INTEGER product_id FK    
+        TEXT item_text           
+        INTEGER quantity         
     }
 
     %% Relationships reflecting your flow
