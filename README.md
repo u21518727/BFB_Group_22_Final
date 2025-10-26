@@ -1,6 +1,7 @@
 # BFB Group Project Final
 
-A simple web-based inventory management system built with HTML, Bootstrap, and SQLite.
+A simple web-based STORE NAVIGATION FOR ENHANCED RETAIL SUPPLY
+CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
 
 ## Features
 
