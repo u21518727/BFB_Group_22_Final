@@ -34,97 +34,108 @@ CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
 erDiagram
     customers {
         INTEGER customer_id PK
-        TEXT first_name
-        TEXT last_name
-        TEXT email UK
-        TEXT home_location
-        TEXT password_hash
+        TEXT    first_name
+        TEXT    last_name
+        TEXT    email UK
+        TEXT    home_location       
+        TEXT    password_hash
         DATETIME created_at
         DATETIME updated_at
     }
 
-    staff_members {
+    staff_users {
         INTEGER staff_id PK
-        TEXT staff_login_id UK  
-        TEXT name
-        TEXT password_hash
+        TEXT    employee_id UK
+        TEXT    first_name
+        TEXT    last_name
+        TEXT    work_email UK
+        TEXT    phone
+        TEXT    department
+        TEXT    position
+        TEXT    password_hash
+        TEXT    status              
         DATETIME created_at
         DATETIME updated_at
     }
 
     product_categories {
         INTEGER category_id PK
-        TEXT category_name UK
-        TEXT category_description
+        TEXT    category_name UK
+        TEXT    category_description
         DATETIME created_at
     }
 
     products {
         INTEGER product_id PK
-        TEXT product_code UK     
-        TEXT product_name
+        TEXT    product_code UK     
+        TEXT    product_name
         INTEGER category_id FK
-        INTEGER min_quantity
-        INTEGER max_quantity
+        INTEGER min_qty
+        INTEGER max_qty
         DATETIME created_at
         DATETIME updated_at
     }
 
-    inventory_locations {
+    locations {
         INTEGER location_id PK
-        TEXT location_name UK
-        TEXT description
+        TEXT    location_name       
+        TEXT    address
         DATETIME created_at
+        DATETIME updated_at
     }
 
-    inventory_levels {
-        INTEGER level_id PK
+    stock_levels {
+        INTEGER stock_level_id PK
         INTEGER product_id FK
         INTEGER location_id FK
-        INTEGER quantity_on_hand
-        DATETIME last_counted_at
+        INTEGER qty_on_hand
+        DATETIME updated_at
     }
 
-    inventory_updates {
+    stock_updates {
         INTEGER update_id PK
         INTEGER product_id FK
-        INTEGER staff_id FK
         INTEGER location_id FK
+        INTEGER staff_id FK          
+        TEXT    update_type          
         INTEGER quantity_change
-        TEXT reason
-        TEXT notes
+        INTEGER old_quantity
+        INTEGER new_quantity
+        TEXT    reason               
+        TEXT    notes
         DATETIME created_at
     }
 
-    grocery_orders {
+    orders {
         INTEGER order_id PK
         INTEGER customer_id FK
-        TEXT current_location    
-        TEXT status              
-        DATETIME created_at
+        TEXT    current_location    
+        TEXT    status              
+        DATETIME submitted_at
+        DATETIME updated_at
     }
 
-    grocery_order_items {
+    order_items {
         INTEGER order_item_id PK
         INTEGER order_id FK
-        INTEGER product_id FK    
-        TEXT item_text           
-        INTEGER quantity         
+        INTEGER product_id FK
+        INTEGER requested_qty
+        TEXT    notes                
     }
 
-    %% Relationships reflecting your flow
-    customers ||--o{ grocery_orders : "creates"
-    grocery_orders ||--o{ grocery_order_items : "contains"
-    products ||--o{ grocery_order_items : "matches(optional)"
+    // Relationships
+    customers ||--o{ orders : "places"
+    orders ||--o{ order_items : "contains"
+    products ||--o{ order_items : "requested"
 
     product_categories ||--o{ products : "categorizes"
-    products ||--o{ inventory_levels : "stocked"
-    inventory_locations ||--o{ inventory_levels : "at"
 
-    staff_members ||--o{ inventory_updates : "performs"
-    products ||--o{ inventory_updates : "updates"
-    inventory_locations ||--o{ inventory_updates : "at"
+    locations ||--o{ stock_levels : "holds"
+    products  ||--o{ stock_levels : "tracked at"
 
+    products  ||--o{ stock_updates : "adjusted by"
+    locations ||--o{ stock_updates : "at"
+    staff_users ||--o{ stock_updates : "performs"
 
 ```
 
