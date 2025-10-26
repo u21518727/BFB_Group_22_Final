@@ -100,7 +100,7 @@ erDiagram
         INTEGER request_id PK
         INTEGER customer_id FK
         TEXT current_location
-        TEXT status
+        TEXT grc_items
         DATETIME created_at
     }
 
