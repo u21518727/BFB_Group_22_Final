@@ -45,7 +45,7 @@ erDiagram
 
     staff_members {
         INTEGER staff_id PK
-        TEXT staff_code UK
+        TEXT staff_login_id UK  // "Staff ID" entered on verification
         TEXT name
         TEXT password_hash
         DATETIME created_at
@@ -61,8 +61,8 @@ erDiagram
 
     products {
         INTEGER product_id PK
+        TEXT product_code UK     // "Product ID" on Add Product
         TEXT product_name
-        TEXT product_code UK
         INTEGER category_id FK
         INTEGER min_quantity
         INTEGER max_quantity
@@ -96,23 +96,27 @@ erDiagram
         DATETIME created_at
     }
 
-    grocery_requests {
-        INTEGER request_id PK
+    grocery_orders {
+        INTEGER order_id PK
         INTEGER customer_id FK
-        TEXT current_location
-        TEXT grc_items
+        TEXT current_location    // from Customer Portal form
+        TEXT status              // e.g. "submitted","processing"
         DATETIME created_at
     }
 
-    grocery_request_items {
-        INTEGER request_item_id PK
-        INTEGER request_id FK
-        INTEGER product_id FK
-        TEXT item_text
-        INTEGER quantity
+    grocery_order_items {
+        INTEGER order_item_id PK
+        INTEGER order_id FK
+        INTEGER product_id FK    // optional match if item maps to a catalog product
+        TEXT item_text           // free-text line from textarea
+        INTEGER quantity         // default 1 if not captured
     }
 
-    %% Relationships (mirroring your UI flow)
+    %% Relationships reflecting your flow
+    customers ||--o{ grocery_orders : "creates"
+    grocery_orders ||--o{ grocery_order_items : "contains"
+    products ||--o{ grocery_order_items : "matches(optional)"
+
     product_categories ||--o{ products : "categorizes"
     products ||--o{ inventory_levels : "stocked"
     inventory_locations ||--o{ inventory_levels : "at"
@@ -121,9 +125,6 @@ erDiagram
     products ||--o{ inventory_updates : "updates"
     inventory_locations ||--o{ inventory_updates : "at"
 
-    customers ||--o{ grocery_requests : "creates"
-    grocery_requests ||--o{ grocery_request_items : "contains"
-    products ||--o{ grocery_request_items : "matches(optional)"
 
 ```
 
