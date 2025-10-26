@@ -123,7 +123,6 @@ erDiagram
         TEXT    notes                
     }
 
-    // Relationships
     customers ||--o{ orders : "places"
     orders ||--o{ order_items : "contains"
     products ||--o{ order_items : "requested"
