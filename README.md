@@ -142,7 +142,7 @@ The database includes the following tables:
 
 The database includes sample data for testing:
 
-- **9 Categories**: Electronics, Clothing, Books, Food & Beverages, Tools & Hardware, Furniture, Beauty & Health, Sports & Outdoors, Other
+- **10 Categories**: Meat,Poultry,Fish,Produce,Dairy,Bakery,Starch,Beverages,Cleaning Supplies,Electronics,Other
 - ** Department**; 
 
 ## File Structure
