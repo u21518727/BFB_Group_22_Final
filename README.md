@@ -39,8 +39,6 @@ erDiagram
         TEXT    cust_email UK
         TEXT    cust_location       
         TEXT    cust_password
-        DATETIME created_at
-        DATETIME updated_at
     }
 
     staff {
@@ -52,14 +50,12 @@ erDiagram
         TEXT    position
         TEXT    staff_password
         INTEGER department_id FK
-        DATETIME created_at
-        DATETIME updated_at
+
     }
 
     categories {
         INTEGER category_id PK
         TEXT    category_name UK
-        DATETIME created_at
     }
 
     new_product {
@@ -69,15 +65,12 @@ erDiagram
         INTEGER max_qty
         INTEGER category_id FK
         INTEGER staff_id FK
-        DATETIME created_at
-        DATETIME updated_at
     }
 
     location {
         INTEGER location_id PK
         TEXT    location_name       
-        DATETIME created_at
-        DATETIME updated_at
+
     }
 
     update_inventory {
@@ -87,8 +80,7 @@ erDiagram
         INTEGER location_id FK
         INTEGER staff_id FK
         INTEGER category_id FK
-        DATETIME created_at
-        DATETIME updated_at
+
     }
 
     cust_order {
@@ -96,15 +88,13 @@ erDiagram
         TEXT   grc_items
         INTEGER customer_id FK
         INTEGER location_id FK    
-        DATETIME submitted_at
-        DATETIME updated_at
+
     }
 
     department {
         INTEGER department_id PK
         TEXT    department_name
-        DATETIME created_at
-        DATETIME updated_at
+
     }
 
     customer ||--o{ cust_order : "places"
