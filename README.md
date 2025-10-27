@@ -17,18 +17,17 @@ CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
 - **Customer Portal**:From here you can submit grocery items, view products and check order status.
 - **Staff Verification**:This is a placeholder page for staff verification. In a real application, this would include authentication mechanisms.
 - **Staff Dashboard**:Quick tools to manage inventory, process orders and help customers efficiently. This form is a simple placeholder for updating inventory items.
-- **Inventory Overview**:Live counts and quick actions restock alerts highlight low stock automatically.
+- **Inventory Overview**:Live counts and quick actions restock alerts highlight low stock automatically. With that we also included an automation so that pdf order sheet will be filled in automaticaly and sent the DC.
 - **Add new Inventory**: Use the form to add a new product and the details of the product to the inventory.
 - **Other**:-Contact-Privacy policy-Terms of service
 
 ## Database Setup
 
-### Using SQLite Command Line
+### Using MYSQL workbench we created our Database
 
-1. Open command prompt/terminal in the project directory
-2. Run the SQL commands:
-   ```bash
-   sql data.db < data.sql
+This is the file:
+```bash
+   data.sql
    ```
 
 ## Database Schema
@@ -144,9 +143,7 @@ The database includes the following tables:
 The database includes sample data for testing:
 
 - **9 Categories**: Electronics, Clothing, Books, Food & Beverages, Tools & Hardware, Furniture, Beauty & Health, Sports & Outdoors, Other
-- **1 Vendor**: John Doe (TechStore Solutions)
-- **10 Products**: Various items across different categories with realistic pricing and quantities
-- **8 Stock Updates**: Sample transaction history
+- ** Department**; 
 
 ## File Structure
 ```
