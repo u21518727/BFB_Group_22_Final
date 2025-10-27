@@ -8,7 +8,7 @@
 
 A simple web-based STORE NAVIGATION FOR ENHANCED RETAIL SUPPLY
 CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
-
+ 
 ## Features
 
 - **Home**: Overview of our system GrocerEase and indicate to sign in/up as customer or staff.
