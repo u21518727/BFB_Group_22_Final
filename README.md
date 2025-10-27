@@ -140,8 +140,8 @@ The database includes the following tables:
 
 ### Views
 
-1. **low_stock_products**: View of products with low stock alerts
-2. **inventory_summary**: Summary statistics for the dashboard
+1. **customer_orders**: View of order of products that the customer placed.
+2. **inventory_overview**: Summary overview of the current inventory.
 
 ## Sample Data
 
