@@ -143,31 +143,35 @@ The database includes sample data for testing:
 - **8 Stock Updates**: Sample transaction history
 
 ## File Structure
-
 ```
-├── index.html              # Main dashboard
-├── login.html              # Vendor login page
-├── register.html           # Vendor registration page
-├── add-product.html        # Add new products
-├── view-inventory.html     # View all inventory
-├── update-stock.html       # Update stock levels
-├── inventory.sql           # Database schema and sample data
-├── inventory.db            # SQLite database (created after running setup)
-└── readme.md              # This file
+├── Customer.html                # Customer portal/dashboard
+├── Customer_login.html          # Customer login page
+├── Customer_registration.html   # Customer registration form
+├── Home.html                    # Home page
+├── README.md                    # Project overview & instructions
+├── Staff.html                   # Staff dashboard
+├── Staff_registration.html      # Staff registration form
+├── Verification.html            # Staff verification / login
+├── contact.html                 # Contact page
+├── data.sql                     # Database schema / sample data
+├── inventory.html               # Inventory management page
+├── inventory_products.html      # Inventory products list
+├── privacy-policy.html          # Privacy policy
+├── styles.css                   # Global stylesheet
+└── terms-of-service.html        # Terms of service
 ```
 
 ## Usage
 
-1. Initialize the database using the SQLite command line method above
-2. Open `index.html` in your web browser
-3. Navigate through the different pages to manage your inventory
+1. Initialize the database using the SQL command line method above
+2. Open `Home.html` in your web browser
+3. Navigate through the different pages to see customer and staff views.
 
 ## Technologies Used
 
 - **HTML5**: Structure and forms
-- **Bootstrap 5.3.8**: UI framework and styling
-- **Bootstrap Icons**: Icon set
-- **SQLite**: Database for data persistence
+- **Visual Studio**: Styling
+- **MySQL Workbench**: Database for data persistence and ERD creation
 
 ## Browser Compatibility
 
@@ -177,4 +181,3 @@ The application works with all modern browsers that support HTML5 and CSS3, incl
 - Safari 14+
 - Edge 90+
 
-Note: This is a static HTML application. For production use, you would need to add backend functionality for database connectivity and form processing.
