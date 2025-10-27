@@ -1,10 +1,10 @@
 # BFB Group Project Final
 
 ## Members
-Louwhann Crous       u21518727
-Christiaan Conradie  u22601539
-Sebastian du Toit    u22500350
-Wandre Nel           u22494822
+- Louwhann Crous       u21518727
+- Christiaan Conradie  u22601539
+- Sebastian du Toit    u22500350
+- Wandre Nel           u22494822
 
 A simple web-based STORE NAVIGATION FOR ENHANCED RETAIL SUPPLY
 CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
