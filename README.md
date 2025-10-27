@@ -32,109 +32,96 @@ CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
 ```mermaid
 
 erDiagram
-    customers {
+    customer {
         INTEGER customer_id PK
-        TEXT    first_name
-        TEXT    last_name
-        TEXT    email UK
-        TEXT    home_location       
-        TEXT    password_hash
+        TEXT    cust_name
+        TEXT    cust_surname
+        TEXT    cust_email UK
+        TEXT    cust_location       
+        TEXT    cust_password
         DATETIME created_at
         DATETIME updated_at
     }
 
-    staff_users {
+    staff {
         INTEGER staff_id PK
-        TEXT    employee_id UK
-        TEXT    first_name
-        TEXT    last_name
-        TEXT    work_email UK
-        TEXT    phone
-        TEXT    department
+        TEXT    staff_name
+        TEXT    staff_surname
+        TEXT    staff_email UK
+        TEXT    phone_nmr UK
         TEXT    position
-        TEXT    password_hash
-        TEXT    status              
+        TEXT    staff_password
+        INTEGER department_id FK
         DATETIME created_at
         DATETIME updated_at
     }
 
-    product_categories {
+    categories {
         INTEGER category_id PK
         TEXT    category_name UK
-        TEXT    category_description
         DATETIME created_at
     }
 
-    products {
-        INTEGER product_id PK
-        TEXT    product_code UK     
+    new_product {
+        INTEGER product_id PK     
         TEXT    product_name
-        INTEGER category_id FK
         INTEGER min_qty
         INTEGER max_qty
+        INTEGER category_id FK
+        INTEGER staff_id FK
         DATETIME created_at
         DATETIME updated_at
     }
 
-    locations {
+    location {
         INTEGER location_id PK
         TEXT    location_name       
-        TEXT    address
         DATETIME created_at
         DATETIME updated_at
     }
 
-    stock_levels {
-        INTEGER stock_level_id PK
+    update_inventory {
+        INTEGER update_id PK         
+        INTEGER quantity
         INTEGER product_id FK
         INTEGER location_id FK
-        INTEGER qty_on_hand
+        INTEGER staff_id FK
+        INTEGER category_id FK
+        DATETIME created_at
         DATETIME updated_at
     }
 
-    stock_updates {
-        INTEGER update_id PK
-        INTEGER product_id FK
-        INTEGER location_id FK
-        INTEGER staff_id FK          
-        TEXT    update_type          
-        INTEGER quantity_change
-        INTEGER old_quantity
-        INTEGER new_quantity
-        TEXT    reason               
-        TEXT    notes
-        DATETIME created_at
-    }
-
-    orders {
+    cust_order {
         INTEGER order_id PK
+        TEXT   grc_items
         INTEGER customer_id FK
-        TEXT    current_location    
-        TEXT    status              
+        INTEGER location_id FK    
         DATETIME submitted_at
         DATETIME updated_at
     }
 
-    order_items {
-        INTEGER order_item_id PK
-        INTEGER order_id FK
-        INTEGER product_id FK
-        INTEGER requested_qty
-        TEXT    notes                
+    department {
+        INTEGER department_id PK
+        TEXT    department_name
+        DATETIME created_at
+        DATETIME updated_at
     }
 
-    customers ||--o{ orders : "places"
-    orders ||--o{ order_items : "contains"
-    products ||--o{ order_items : "requested"
+    customer ||--o{ cust_order : "places"
+    cust_order ||--|| location : "at"
+    
+    update_inventory ||--|| location : "at"
 
-    product_categories ||--o{ products : "categorizes"
+    categories ||--|| update_inventory : "categorizes"
+    categories ||--|| new_product : "categorizes"
 
-    locations ||--o{ stock_levels : "holds"
-    products  ||--o{ stock_levels : "tracked at"
+    staff ||--|| department : "at which"
+    staff  ||--o{ new_product : "adds"
+    staff ||--o{ update_inventory : "updates"
+    
+    update_inventory ||--o{ new_product : "add to"
 
-    products  ||--o{ stock_updates : "adjusted by"
-    locations ||--o{ stock_updates : "at"
-    staff_users ||--o{ stock_updates : "performs"
+
 
 ```
 
