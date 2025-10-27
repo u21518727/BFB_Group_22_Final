@@ -22,7 +22,7 @@ CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
 1. Open command prompt/terminal in the project directory
 2. Run the SQL commands:
    ```bash
-   sqlite3 inventory.db < inventory.sql
+   sql data.db < data.sql
    ```
 
 ## Database Schema
