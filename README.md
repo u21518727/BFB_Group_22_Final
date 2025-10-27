@@ -129,10 +129,14 @@ The database includes the following tables:
 
 ### Tables
 
-1. **product_categories**: Product categories (Electronics, Clothing, Books, etc.)
-2. **vendors**: Registered vendors and their business information
-3. **products**: Product inventory with SKU, name, quantity, price, etc.
-4. **stock_updates**: History of all stock level changes
+1. **customer**: Registration and login information about customers who place orders.
+2. **staff**: Registration and login of staff and their information to continue with updating inventory.
+3. **location**: Indicates location of delivery/ pick-up of grocery items.
+4. **department**: Stores information about company departments for the staff.
+5. **categories**: Defines types of products. (Electronics, Clothing, Books, etc.)
+6. **cust_order**: Showcases the location where customer orders products and the grocery items
+7. **new_product**: Allow staff to add new type of product into the inventory system.
+8. **update_inventory**: Tracks updates made to the inventory in levvels of quantity
 
 ### Views
 
