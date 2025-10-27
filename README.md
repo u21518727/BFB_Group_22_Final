@@ -143,7 +143,7 @@ The database includes the following tables:
 The database includes sample data for testing:
 
 - **10 Categories**: Meat,Poultry,Fish,Produce,Dairy,Bakery,Starch,Beverages,Cleaning Supplies,Electronics,Other
-- ** Department**; 
+- **6 Departments**; Inventory Management,Sales,Customer Service,Logistics,Administration
 
 ## File Structure
 ```
