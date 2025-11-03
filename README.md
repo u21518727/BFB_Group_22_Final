@@ -27,7 +27,7 @@ CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
 
 This is the file:
 ```bash
-sqlite3 newdata.db < newdata_fixed.sql
+sqlite3 newdata.db < newdata.sql
    ```
 
 ## Database Schema
