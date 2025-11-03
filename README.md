@@ -23,11 +23,11 @@ CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
 
 ## Database Setup
 
-### Using MYSQL workbench we created our Database
+### Using SQLite  we created our Database
 
 This is the file:
 ```bash
-   data.sql
+sqlite3 newdata.db < newdata_fixed.sql
    ```
 
 ## Database Schema
@@ -142,8 +142,8 @@ The database includes the following tables:
 
 The database includes sample data for testing:
 
-- **10 Categories**: Meat,Poultry,Fish,Produce,Dairy,Bakery,Starch,Beverages,Cleaning Supplies,Electronics,Other
-- **6 Departments**; Inventory Management,Sales,Customer Service,Logistics,Administration
+- **11 Categories**: Meat,Poultry,Fish,Produce,Dairy,Bakery,Starch,Beverages,Cleaning Supplies,Electronics,Other
+- **5 Departments**; Inventory Management,Sales,Customer Service,Logistics,Administration
 
 ## File Structure
 ```
