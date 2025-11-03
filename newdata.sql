@@ -3,7 +3,7 @@
 --
 -- Text encoding used: System
 --
-PRAGMA foreign_keys = off;
+PRAGMA foreign_keys = on;
 BEGIN TRANSACTION;
 
 -- Table: categories
@@ -47,4 +47,5 @@ CREATE TABLE IF NOT EXISTS staff (staff_id INTEGER PRIMARY KEY, staff_name TEXT,
 CREATE TABLE IF NOT EXISTS update_inventory (update_id INTEGER PRIMARY KEY, quantity INTEGER, product_id TEXT REFERENCES new_product (product_id), location_id INTEGER REFERENCES location (location_id), staff_id INTEGER REFERENCES staff (staff_id), category_id INTEGER REFERENCES categories (category_id));
 
 COMMIT TRANSACTION;
-PRAGMA foreign_keys = on;
+PRAGMA foreign_keys = off;
+
