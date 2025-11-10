@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Customer</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="Home.html" class="logo">
+                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M7 4h-2a1 1 0 0 0 0 2h1.22l1.6 6.4a2 2 0 0 0 1.95 1.45h7.48a1 1 0 0 0 .97-.76l1.2-5.2a1 1 0 0 0-.97-1.24H8.7L8.2 4.2A1 1 0 0 0 7 4zm0 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                    </svg>
+                    <span class="logo-text">GrocerEase</span>
+                </a>
+                <nav class="nav-buttons">
+                    <a href="Customer.html" class="nav-btn nav-btn--primary">My Account</a>
+                    <a href="Home.html" class="nav-btn nav-btn--secondary">Logout</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="page-hero">
+                <div class="hero-content">
+                    <div class="hero-copy">
+                        <h1>Welcome back — Here's what's new</h1>
+                        <p class="lead">Fresh produce added today. Check recommended items based on your past orders.</p>
+                    </div>
+                    <div class="hero-illustration" aria-hidden="true">
+                        <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" role="img">
+                            <rect x="10" y="18" width="70" height="40" rx="6" fill="#3b82f6" />
+                            <line x1="80" y1="22" x2="100" y2="8" stroke="#2563eb" stroke-width="6" stroke-linecap="round" />
+                            <circle cx="38" cy="70" r="8" fill="#0ea5a4" />
+                            <circle cx="78" cy="70" r="8" fill="#0ea5a4" />
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <h2>Customer Portal</h2>
+            <p>Welcome, customer. From here you can submit grocery items, view products and check order status.</p>
+            <section>
+                <h2>Submit grocery items</h2>
+                <p>List each grocery item on a new line. This form posts to a placeholder endpoint.</p>
+                <form action="submit_groceries.html" method="post">
+                    <label for="items">Grocery Items</label>
+                    <textarea id="items" name="items" rows="6" required></textarea>
+
+                    <div class="form-field">
+                        <input type="text" id="current-location" name="current-location" placeholder=" " required>
+                        <label for="current-location">Current Location</label>
+                    </div>
+                    
+                    <p><button type="submit">Submit</button></p>
+                </form>
+            </section>
+
+            <section>
+                <h2>Your Orders</h2>
+                <p>(Orders and order history would be shown here.)</p>
+            </section>
+        </main>
+
+        <div class="back-to-home">
+            <a class="btn btn--danger" href="Home.html">Back to Home</a>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 GrocerEase</p>
+                <div class="footer-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</html>

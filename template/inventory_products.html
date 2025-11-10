@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Inventory Products</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="Home.html" class="logo">
+                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M7 4h-2a1 1 0 0 0 0 2h1.22l1.6 6.4a2 2 0 0 0 1.95 1.45h7.48a1 1 0 0 0 .97-.76l1.2-5.2a1 1 0 0 0-.97-1.24H8.7L8.2 4.2A1 1 0 0 0 7 4zm0 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                    </svg>
+                    <span class="logo-text">GrocerEase</span>
+                </a>
+                <nav class="nav-buttons">
+                    <a href="Staff.html" class="nav-btn nav-btn--secondary">Staff Dashboard</a>
+                    <a href="Home.html" class="nav-btn nav-btn--secondary">Logout</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="page-hero">
+                <div class="hero-content">
+                    <div class="hero-copy">
+                        <h1>Add New Inventory Product</h1>
+                        <p class="lead">Use the form below to add a new product to the inventory.</p>
+                    </div>
+                    <div class="hero-illustration" aria-hidden="true">
+                        <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" role="img">
+                            <rect x="10" y="18" width="100" height="54" rx="8" fill="#f3f4f6" stroke="#d1d5db"/>
+                            <circle cx="40" cy="45" r="10" fill="#3b82f6"/>
+                            <rect x="60" y="36" width="36" height="6" rx="3" fill="#6b7280"/>
+                            <rect x="60" y="48" width="28" height="6" rx="3" fill="#6b7280"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <h2>New Product Form</h2>
+            <p>Fill out the details of the new product to add it to the inventory.</p>
+            <section>
+                <form action="submit_new_product.html" method="post">
+                    <div>
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" name="product-name" required>
+                    </div>
+
+                    <div>
+                        <label for="product-id">Product ID</label>
+                        <input type="text" id="product-id" name="product-id" required>
+                    </div>
+
+                    <div>
+                        <label for="min-quantity">Minimum Quantity</label>
+                        <input type="number" id="min-quantity" name="min-quantity" required>
+                    </div>
+
+                    <div>
+                        <label for="max-quantity">Maximum Quantity</label>
+                        <input type="number" id="max-quantity" name="max-quantity" required>
+                    </div>
+
+                    <div>
+                        <label for="Categorie">Category</label>
+                        <select id="Categorie" name="Categorie" required>
+                            <option value="">-- Select a category --</option>
+                            <option value="Meat">Meat</option>
+                            <option value="Poultry">Poultry</option>
+                            <option value="Fish">Fish</option>
+                            <option value="Produce">Produce</option>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Bakery">Bakery</option>
+                            <option value="Starch">Starch</option>
+                            <option value="beverages">Beverages</option>
+                            <option value="cleaning">Cleaning Supplies</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="controls">
+                        <button type="submit">Add Product</button>
+                    </div>
+                </form>
+            </section>
+        </main> 
+        <div class="back-to-home">
+            <a class="btn btn--danger" href="Staff.html">Back to Staff Dashboard</a>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 GrocerEase</p>
+                <div class="footer-links">
+                    <a href="Home.html">Home</a>
+                    <a href="Customer_login.html">Customer Login</a>
+                    <a href="Verification.html">Staff Login</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
