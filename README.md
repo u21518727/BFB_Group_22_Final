@@ -3,11 +3,11 @@
 ## Members
 - Louwhann Crous       u21518727  
 Github username: u21518727
-- Christiaan Conradie  u22601539
+- Christiaan Conradie  u22601539   
 Github username: CConradie2003
-- Sebastian du Toit    u22500350
+- Sebastian du Toit    u22500350   
 Github username: Sebasdutoit
-- Wandre Nel           u22494822
+- Wandre Nel           u22494822   
 Github username: Wandre05
 
 
