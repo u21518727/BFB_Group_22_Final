@@ -173,7 +173,7 @@ The database includes sample data for testing:
 
 ### Louwhann Crous (u21518727) — **Project Co-lead, Integration & Core DB (co-owner)**
 **Primary**
-- Project lead: repo conventions, folders, **uploaded most files/commits**, branch/merge strategy.  
+- Project lead: repo conventions, folders, **uploaded most files/commits** thus commits is uneven spread before final exam project, branch/merge strategy.  
 - **Core DB (with Wandre):** final schema sign-off, view logic design, sample data plan.  
 - **ERD** (for SQLite) designed in MySQL Workbench **with help from Wandre**.  
 - Customer Portal integration (`Customer.html`), site-wide navigation, final demo polish.
