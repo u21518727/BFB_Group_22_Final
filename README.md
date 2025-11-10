@@ -184,8 +184,8 @@ The database includes sample data for testing:
 
 **Files (Owner → Reviewer)**
 - `Customer.html` → Reviewer: Sebastian  
-- `/docs/ERD.png|.pdf` → Reviewer: Wandre  
-- Co-owner: `data.sql` → Reviewer: Christiaan
+- created ERD in `README.md` → Reviewer: Wandre  
+- Co-owner: `newdata.sql` → Reviewer: Christiaan
 
 **Report Role**
 - **Editor/Overseer** — structure coherence, integration & commit history, ERD/DB section sign-off.
@@ -204,7 +204,7 @@ The database includes sample data for testing:
 - Review Staff pages for data correctness; assist on ERD refinements.
 
 **Files (Owner → Reviewer)**
-- `newdata.sql`, build (`sqlite3 newdata.db < data.sql`) → Reviewer: Louwhann  
+- `newdata.sql`, build (`sqlite3 newdata.db < newdata.sql`) → Reviewer: Louwhann  
 - Inventory UI tweaks → Reviewer: Sebastian  
 - Co-owner: ERD → Reviewer: Christiaan
 
