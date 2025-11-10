@@ -162,7 +162,8 @@ The database includes sample data for testing:
 ├── Staff_registration.html      # Staff registration form
 ├── Verification.html            # Staff verification / login
 ├── contact.html                 # Contact page
-├── data.sql                     # Database schema / sample data
+├── newdata.sql                  # Database schema / sample data
+├── newdata.db                   # db file creation from sql file
 ├── inventory.html               # Inventory management page
 ├── inventory_products.html      # Inventory products list
 ├── privacy-policy.html          # Privacy policy
