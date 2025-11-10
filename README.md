@@ -171,7 +171,7 @@ The database includes sample data for testing:
 ```
 ## Task Allocation
 
-### Louwhann Crous (u21518727) — **Project Lead, Integration & Core DB (co-owner)**
+### Louwhann Crous (u21518727) — **Project Co-lead, Integration & Core DB (co-owner)**
 **Primary**
 - Project lead: repo conventions, folders, **uploaded most files/commits**, branch/merge strategy.  
 - **Core DB (with Wandre):** final schema sign-off, view logic design, sample data plan.  
@@ -191,7 +191,7 @@ The database includes sample data for testing:
 
 ---
 
-### Wandre Nel (u22494822) — **Core DB (co-owner) & Frontend Expansion + PDF Prototype**
+### Wandre Nel (u22494822) — **Core DB (co-lead) & Frontend Expansion + PDF Prototype**
 **Primary**
 - **Core DB (with Louwhann):** author `newdata.sql` (tables, views, inserts), **build scripts**, fix build errors.  
 - Validate ERD ↔ schema; keep in sync.  
