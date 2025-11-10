@@ -169,6 +169,89 @@ The database includes sample data for testing:
 ├── styles.css                   # Global stylesheet
 └── terms-of-service.html        # Terms of service
 ```
+## Task Allocation
+
+### Louwhann Crous (u21518727) — **Project Lead, Integration & Core DB (co-owner)**
+**Primary**
+- Project lead: repo conventions, folders, **uploaded most files/commits**, branch/merge strategy.  
+- **Core DB (with Wandre):** final schema sign-off, view logic design, sample data plan.  
+- **ERD** (for SQLite) designed in MySQL Workbench **with help from Wandre**.  
+- Customer Portal integration (`Customer.html`), site-wide navigation, final demo polish.
+
+**Secondary**
+- Frontend support on Customer flows; review Staff UX coherence.
+
+**Files (Owner → Reviewer)**
+- `Customer.html` → Reviewer: Sebastian  
+- `/docs/ERD.png|.pdf` → Reviewer: Wandre  
+- Co-owner: `data.sql` → Reviewer: Christiaan
+
+**Report Role**
+- **Editor/Overseer** — structure coherence, integration & commit history, ERD/DB section sign-off.
+
+---
+
+### Wandre Nel (u22494822) — **Core DB (co-owner) & Frontend Expansion**
+**Primary**
+- **Core DB (with Louwhann):** author `data.sql` (tables, views, inserts), **build scripts**, fix build errors.  
+- Validate ERD ↔ schema; keep in sync.  
+- Frontend expansion: inventory forms/tables, low-stock badges, responsive tweaks.
+
+**Secondary**
+- Review Staff pages for data correctness; assist on ERD refinements.
+
+**Files (Owner → Reviewer)**
+- `data.sql`, build (`sqlite3 newdata.db < data.sql`) → Reviewer: Christiaan  
+- Inventory UI tweaks → Reviewer: Sebastian  
+- Co-owner: ERD → Reviewer: Christiaan
+
+**Report Role**
+- **Editor/Overseer** — DB correctness, terminology, low-stock logic explanation.
+
+---
+
+### Christiaan Conradie (u22601539) — **Staff & Ops + PDF Prototype + Report Co-Author**
+**Primary**
+- Staff & Ops UI:
+  - `Verification.html` (staff placeholder)
+  - `Staff.html` (dashboard)
+  - `inventory_overview` (page/section)
+  - `inventory_products.html`
+  - `inventory.html` (add/update form)  
+- **Order-sheet → PDF prototype** (static export) + README notes on how email to DC would work.  
+- Reviewer for DB deliverables.
+
+**Secondary**
+- Frontend polish with Sebastian (tables/forms, accessibility).
+
+**Files (Owner → Reviewer)**
+- `Verification.html` → Reviewer: Sebastian  
+- `Staff.html` → Reviewer: Louwhann  
+- `inventory_overview` → Reviewer: Wandre  
+- `inventory_products.html` → Reviewer: Wandre  
+- `inventory.html` → Reviewer: Sebastian  
+- `/docs/order-sheet-sample.pdf` → Reviewer: Wandre
+
+**Report Role**
+- **Co-Author** — Staff & Ops, Order-sheet prototype, testing notes; contributes to Executive Summary & Intro.
+
+---
+
+### Sebastian du Toit (u22500350) — **Frontend Lead (Customer) + README Owner + Report Co-Author**
+**Primary**
+- Customer pages: `Home.html`, `Customer_login.html`, `Customer_registration.html`.  
+- **Global styles:** `styles.css` (layout, forms, responsiveness, accessibility).  
+- **README.md** author: overview, setup, screenshots, ERD link.
+
+**Secondary**
+- Frontend expansion with Christiaan/Wandre; polish & accessibility.  
+- Review `Customer.html` and inventory forms for UI consistency.
+
+**Files (Owner → Reviewer)**
+- `Home.html`, `Customer_login.html`, `Customer_registration.html`, `styles.css`, `README.md` → Reviewer: Louwhann
+
+**Report Role**
+- **Co-Author** — Executive Summary, Customer UX, Frontend & Accessibility, Results/Future Work; README cross-links.
 
 ## Usage
 
