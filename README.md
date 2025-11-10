@@ -1,10 +1,16 @@
 # BFB Group Project Final
  
 ## Members
-- Louwhann Crous       u21518727
+- Louwhann Crous       u21518727  
+Github username: u21518727
 - Christiaan Conradie  u22601539
+Github username: CConradie2003
 - Sebastian du Toit    u22500350
+Github username: Sebasdutoit
 - Wandre Nel           u22494822
+Github username: Wandre05
+
+
 
 A simple web-based STORE NAVIGATION FOR ENHANCED RETAIL SUPPLY
 CHAIN EFFICIENCY system built with HTML, CSS, and SQL.
