@@ -191,17 +191,19 @@ The database includes sample data for testing:
 
 ---
 
-### Wandre Nel (u22494822) — **Core DB (co-owner) & Frontend Expansion**
+### Wandre Nel (u22494822) — **Core DB (co-owner) & Frontend Expansion + PDF Prototype**
 **Primary**
-- **Core DB (with Louwhann):** author `data.sql` (tables, views, inserts), **build scripts**, fix build errors.  
+- **Core DB (with Louwhann):** author `newdata.sql` (tables, views, inserts), **build scripts**, fix build errors.  
 - Validate ERD ↔ schema; keep in sync.  
 - Frontend expansion: inventory forms/tables, low-stock badges, responsive tweaks.
+- **Order-sheet → PDF prototype** (static export) + README notes on how email to DC would work.  
+
 
 **Secondary**
 - Review Staff pages for data correctness; assist on ERD refinements.
 
 **Files (Owner → Reviewer)**
-- `data.sql`, build (`sqlite3 newdata.db < data.sql`) → Reviewer: Christiaan  
+- `newdata.sql`, build (`sqlite3 newdata.db < data.sql`) → Reviewer: Louwhann  
 - Inventory UI tweaks → Reviewer: Sebastian  
 - Co-owner: ERD → Reviewer: Christiaan
 
@@ -210,7 +212,7 @@ The database includes sample data for testing:
 
 ---
 
-### Christiaan Conradie (u22601539) — **Staff & Ops + PDF Prototype + Report Co-Author**
+### Christiaan Conradie (u22601539) — **Staff & Ops  + Report Co-Author**
 **Primary**
 - Staff & Ops UI:
   - `Verification.html` (staff placeholder)
@@ -218,8 +220,7 @@ The database includes sample data for testing:
   - `inventory_overview` (page/section)
   - `inventory_products.html`
   - `inventory.html` (add/update form)  
-- **Order-sheet → PDF prototype** (static export) + README notes on how email to DC would work.  
-- Reviewer for DB deliverables.
+- Reviewer for ERD deliverables.
 
 **Secondary**
 - Frontend polish with Sebastian (tables/forms, accessibility).
