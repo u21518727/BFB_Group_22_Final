@@ -283,7 +283,7 @@ The database includes sample data for testing:
 ## Technologies Used
 
 - **HTML5**: Structure and forms
-- **Visual Studio**: Styling
+- **Visual Studio**:  and python coding
 - **MySQL Workbench**: Database for data persistence and ERD creation
 
 ## Browser Compatibility
