@@ -187,6 +187,11 @@ The database includes sample data for testing:
 - created ERD in `README.md` → Reviewer: Wandre  
 - Co-owner: `newdata.sql` → Reviewer: Christiaan
 
+**REST API Design & Endpoints**
+- Co-design overall API structure and naming conventions.
+- Own endpoints for Customer portal (login, registration, place order, view orders).
+- Review all endpoint definitions for consistency and documentation.
+
 **Report Role**
 - **Editor/Overseer** — structure coherence, integration & commit history, ERD/DB section sign-off.
 
@@ -207,6 +212,10 @@ The database includes sample data for testing:
 - `newdata.sql`, build (`sqlite3 newdata.db < newdata.sql`) → Reviewer: Louwhann  
 - Inventory UI tweaks → Reviewer: Sebastian  
 - Co-owner: ERD → Reviewer: Christiaan
+
+**REST API Design & Endpoints**
+- Helped define endpoints required by the DB schema (inventory, stock levels, orders).
+- Ensured endpoints return data in a format matching tables/views in -`newdata.sql`.
 
 **Report Role**
 - **Editor/Overseer** — DB correctness, terminology, low-stock logic explanation.
@@ -234,6 +243,10 @@ The database includes sample data for testing:
 - `inventory.html` → Reviewer: Sebastian  
 - `/docs/order-sheet-sample.pdf` → Reviewer: Wandre
 
+**REST API Design & Endpoints**
+- Specified endpoint requirements for Staff & Ops pages (verification, inventory overview, add/update product).
+- Tested endpoints from Staff UI and flagged missing/incorrect behaviour.
+
 **Report Role**
 - **Co-Author** — Staff & Ops, Order-sheet prototype, testing notes; contributes to Executive Summary & Intro.
 
@@ -251,6 +264,12 @@ The database includes sample data for testing:
 
 **Files (Owner → Reviewer)**
 - `Home.html`, `Customer_login.html`, `Customer_registration.html`, `styles.css`, `README.md` → Reviewer: Louwhann
+
+**REST API Design & Endpoints**
+- Provided frontend requirements for Customer endpoints (validation, error messages, redirect behaviour).
+- Tested Customer endpoints via `Home.html`, `Customer_login.html`, `Customer_registration.html`.
+
+
 
 **Report Role**
 - **Co-Author** — Executive Summary, Customer UX, Frontend & Accessibility, Results/Future Work; README cross-links.
