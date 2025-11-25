@@ -35,37 +35,81 @@
             </div>
         </section>
 
+        {% if low_stock_items and low_stock_items|length > 0 %}
+        <section class="alerts">
+            <h2 style="color:#b45309;">Low Stock Alerts</h2>
+            <p>The following products are low in stock (below 10 units):</p>
+            <ul>
+                {% for p in low_stock_items %}
+                    <li><strong>{{ p['product_name'] }}</strong> — {{ p['total_qty'] }} left</li>
+                {% endfor %}
+            </ul>
+            <p><a class="btn btn--warning" href="{{ url_for('inventory') }}">Go to Inventory</a></p>
+        </section>
+        {% endif %}
+
+        <!-- Dashboard quick-stat: Total Orders (show latest order number) -->
+        <section style="display:flex; gap:1rem; align-items:flex-start; margin-top:1rem;">
+            <div style="flex: 0 0 220px; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 6px; background: #ffffff; box-shadow: 0 1px 2px rgba(0,0,0,0.03); text-align: center;">
+                <h3 style="margin:0 0 8px 0; font-size:1rem; color:#111827;">Total Orders</h3>
+                <p style="font-size: 2.2rem; margin:0; font-weight:700; color:#0f172a;">{{ total_orders }}</p>
+            </div>
+            <div style="flex:1"></div>
+        </section>
+
+        {% if backorders and backorders|length > 0 %}
+        <section class="alerts">
+            <h2 style="color:#dc2626;">Backorder Alerts</h2>
+            <p>The following items were ordered but not fully in stock:</p>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 14px;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #dc2626;">
+                        <th style="padding: 0.5rem; text-align: left;">Order ID</th>
+                        <th style="padding: 0.5rem; text-align: left;">Customer</th>
+                        <th style="padding: 0.5rem; text-align: left;">Location</th>
+                        <th style="padding: 0.5rem; text-align: left;">Product</th>
+                        <th style="padding: 0.5rem; text-align: center;">Requested</th>
+                        <th style="padding: 0.5rem; text-align: center;">Available</th>
+                        <th style="padding: 0.5rem; text-align: center; color: #dc2626;">Shortage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in backorders %}
+                    <tr style="border-bottom: 1px solid #fecaca; background-color: #fee2e2;">
+                        <td style="padding: 0.5rem;">#{{ b['order_id'] }}</td>
+                        <td style="padding: 0.5rem;">{{ b['cust_name'] }} {{ b['cust_surname'] }}</td>
+                        <td style="padding: 0.5rem;">{{ b['loacation_name'] or 'N/A' }}</td>
+                        <td style="padding: 0.5rem;"><strong>{{ b['product_name'] }}</strong></td>
+                        <td style="padding: 0.5rem; text-align: center;">{{ b['requested_qty'] }}</td>
+                        <td style="padding: 0.5rem; text-align: center;">{{ b['available_qty'] }}</td>
+                        <td style="padding: 0.5rem; text-align: center; color: #dc2626; font-weight: bold;">{{ b['shortage'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% endif %}
+
         <p>Staff sign in to manage orders, inventory and customer issues.</p>
 
         <section>
             <h2>Update Inventory</h2>
-            <p>This form is a simple placeholder for updating inventory items.</p>
+            <p>Select products to add to inventory and specify the quantity to add.</p>
 
             <form action="{{ url_for('update_inventory') }}" method="post">
-                <label for="product_id">Product ID</label>
-                <input id="product_id" name="product_id" type="number" required />
-
-                <label for="category">Category</label>
-                <select id="category" name="category" required>
-                    <option value="">-- Select a category --</option>
-                    <option value="1">Meat</option>
-                    <option value="2">Poultry</option>
-                    <option value="3">Fish</option>
-                    <option value="4">Produce</option>
-                    <option value="5">Dairy</option>
-                    <option value="6">Bakery</option>
-                    <option value="7">Starch</option>
-                    <option value="8">Beverages</option>
-                    <option value="9">Cleaning Supplies</option>
-                    <option value="10">Electronics</option>
-                    <option value="11">Other</option>
+                <label>Select Product to Add</label>
+                <select name="product_id" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
+                    <option value="">-- Select a product --</option>
+                    {% for p in products %}
+                        <option value="{{ p['product_id'] }}">{{ p['product_name'] }}</option>
+                    {% endfor %}
                 </select>
 
-                <label for="quantity">Quantity</label>
-                <input id="quantity" name="quantity" type="number" min="0" required />
+                <label for="quantity">Quantity to Add</label>
+                <input id="quantity" name="quantity" type="number" min="1" value="1" style="width: 100px; text-align: center; font-size: 16px;" required />
 
                 <label for="location">Location</label>
-                <select id="location" name="location" required>
+                <select id="location" name="location" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
                     <option value="">-- Select a location --</option>
                     <option value="1">Centurion</option>
                     <option value="2">Hatfield</option>
@@ -73,6 +117,8 @@
                     <option value="4">Midrand</option>
                     <option value="5">Sandton</option>
                 </select>
+
+                <!-- Category is inferred from the selected product; no manual selection required -->
 
                 <div class="controls">
                     <button type="submit">Update Inventory</button>
@@ -82,10 +128,6 @@
 
         <section>
             <p><a class="btn btn--goodnews" href="{{ url_for('inventory') }}">View Inventory</a></p>
-        </section>
-
-        <section>
-            <p><a class="btn btn--new" href="{{ url_for('add_product') }}">Add Product</a></p>
         </section>
     </main>
 
