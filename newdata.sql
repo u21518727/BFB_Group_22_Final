@@ -1,8 +1,6 @@
--- SQLite Database Schema (Fixed)
 PRAGMA foreign_keys = ON;
 BEGIN TRANSACTION;
 
--- Drop existing tables (if any)
 DROP TABLE IF EXISTS update_inventory;
 DROP TABLE IF EXISTS cust_order;
 DROP TABLE IF EXISTS new_product;
@@ -12,13 +10,11 @@ DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS department;
 DROP TABLE IF EXISTS categories;
 
--- Table: department
 CREATE TABLE department (
     department_id INTEGER PRIMARY KEY,
     department_name TEXT
 );
 
--- Table: staff
 CREATE TABLE staff (
     staff_id INTEGER PRIMARY KEY,
     staff_name TEXT,
@@ -30,19 +26,16 @@ CREATE TABLE staff (
     department_id INTEGER REFERENCES department (department_id)
 );
 
--- Table: categories
 CREATE TABLE categories (
     category_id INTEGER PRIMARY KEY,
     category_name TEXT UNIQUE
 );
 
--- Table: location
 CREATE TABLE location (
     location_id INTEGER PRIMARY KEY,
     loacation_name TEXT
 );
 
--- Table: customer
 CREATE TABLE customer (
     customer_id INTEGER PRIMARY KEY,
     cust_name TEXT,
@@ -52,7 +45,6 @@ CREATE TABLE customer (
     cust_password TEXT
 );
 
--- Table: new_product
 CREATE TABLE new_product (
     product_id INTEGER PRIMARY KEY,
     product_name TEXT,
@@ -62,7 +54,6 @@ CREATE TABLE new_product (
     staff_id INTEGER REFERENCES staff (staff_id)
 );
 
--- Table: update_inventory
 CREATE TABLE update_inventory (
     update_id INTEGER PRIMARY KEY,
     quantity INTEGER,
@@ -72,7 +63,6 @@ CREATE TABLE update_inventory (
     category_id INTEGER REFERENCES categories (category_id)
 );
 
--- Table: cust_order
 CREATE TABLE cust_order (
     order_id INTEGER PRIMARY KEY,
     grc_items TEXT,
@@ -80,7 +70,16 @@ CREATE TABLE cust_order (
     location_id INTEGER REFERENCES location (location_id)
 );
 
--- Insert sample department
+CREATE TABLE backorder (
+    backorder_id INTEGER PRIMARY KEY,
+    order_id INTEGER REFERENCES cust_order (order_id),
+    product_id INTEGER REFERENCES new_product (product_id),
+    requested_qty INTEGER,
+    available_qty INTEGER,
+    shortage INTEGER,
+    status TEXT DEFAULT 'pending'
+);
+
 INSERT INTO department VALUES
 (1, 'Inventory Management'),
 (2, 'Sales'),
@@ -88,7 +87,6 @@ INSERT INTO department VALUES
 (4, 'Logistics'),
 (5, 'Administration');
 
--- Insert sample staff
 INSERT INTO staff VALUES
 (1, 'Louwhann', 'Crous', 'louwhann.crous@company.co.za', '0712345678', 'Inventory Clerk', 'invpass1', 1),
 (2, 'Pieter', 'van Wyk', 'pieter.vanwyk@company.co.za', '0723456789', 'Sales Representative', 'sales22', 2),
@@ -96,7 +94,6 @@ INSERT INTO staff VALUES
 (4, 'Johan', 'Steyn', 'johan.steyn@company.co.za', '0745678901', 'Logistics Coordinator', 'logis77', 4),
 (5, 'Naledi', 'Mokoena', 'naledi.mokoena@company.co.za', '0756789012', 'Admin Officer', 'admin11', 5);
 
--- Insert sample categories
 INSERT INTO categories VALUES
 (1, 'Meat'),
 (2, 'Poultry'),
@@ -110,7 +107,6 @@ INSERT INTO categories VALUES
 (10, 'Electronics'),
 (11, 'Other');
 
--- Insert sample locations
 INSERT INTO location VALUES
 (1, 'Centurion'),
 (2, 'Hatfield'),
@@ -118,14 +114,12 @@ INSERT INTO location VALUES
 (4, 'Midrand'),
 (5, 'Sandton');
 
--- Insert customers
 INSERT INTO customer VALUES
 (1, 'Wandre', 'Nel', 'wandre.nel@example.com', 'Centurion', 'pass123'),
 (2, 'Thabo', 'Nkosi', 'thabo.nkosi@example.com', 'Hatfield', 'secure456'),
 (3, 'Megan', 'Botha', 'megan.botha@example.com', 'Kempton Park', 'megan789'),
 (4, 'Christiaan', 'Conradie', 'christiaan.conradie@example.com', 'Midrand', 'chris321');
 
--- Insert products
 INSERT INTO new_product VALUES
 (1, 'Beef Mince 500g', 10, 100, 1, 1),
 (2, 'Whole Chicken 1kg', 8, 80, 2, 1),
@@ -138,7 +132,6 @@ INSERT INTO new_product VALUES
 (9, 'Dishwashing Liquid 750ml', 10, 100, 9, 1),
 (10, 'Laptop Charger', 5, 50, 10, 1);
 
--- Insert inventory
 INSERT INTO update_inventory VALUES
 (1, 50, 1, 1, 1, 1),
 (2, 30, 2, 2, 1, 2),
@@ -151,7 +144,6 @@ INSERT INTO update_inventory VALUES
 (9, 90, 9, 4, 1, 9),
 (10, 40, 10, 5, 1, 10);
 
--- Insert orders
 INSERT INTO cust_order VALUES
 (1, 'Beef Mince, Chicken Fillet, Milk', 1, 1),
 (2, 'Brown Bread, Butter, Apples', 2, 2),
