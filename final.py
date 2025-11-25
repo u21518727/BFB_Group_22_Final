@@ -12,8 +12,9 @@ app = Flask(__name__,
     static_url_path='/static')
 app.secret_key = 'your-secret-key-here'
 
-db_path = 'newdata.db'
-schema_path = 'newdata.sql'
+base_dir = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(base_dir, 'newdata.db')
+schema_path = os.path.join(base_dir, 'newdata.sql')
 if not os.path.exists(db_path):
     if os.path.exists(schema_path):
         try:
@@ -55,7 +56,7 @@ def serve_root_styles():
 
 @app.route('/')
 def home():
-    conn = sqlite3.connect('newdata.db')
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
 
     products_count = conn.execute('SELECT COUNT(*) FROM new_product').fetchone()[0]
@@ -86,7 +87,7 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
         
-        conn = sqlite3.connect('newdata.db')
+        conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         
         cursor = conn.cursor()
@@ -114,14 +115,13 @@ def customer_dashboard():
     
     customer_id = session['user_id']
 
-    conn = sqlite3.connect('newdata.db')
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute("""
-        SELECT co.order_id,
+    cursor.execute("""SELECT co.order_id,
                co.grc_items,
-               l.loacation_name
+               l.location_name
         FROM cust_order AS co
         LEFT JOIN location AS l
           ON co.location_id = l.location_id
@@ -134,7 +134,7 @@ def customer_dashboard():
         'SELECT product_id, product_name FROM new_product ORDER BY product_name'
     ).fetchall()
 
-    locations = cursor.execute('SELECT location_id, loacation_name FROM location ORDER BY loacation_name').fetchall()
+    locations = cursor.execute('SELECT location_id, location_name FROM location ORDER BY location_name').fetchall()
 
     conn.close()
 
@@ -162,7 +162,7 @@ def register():
             flash('Passwords do not match.', 'error')
             return redirect(url_for('register'))
         
-        conn = sqlite3.connect('newdata.db')
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         
         cursor.execute('SELECT customer_id FROM customer WHERE cust_email = ?', (email,))
@@ -208,7 +208,7 @@ def staff_register():
             flash('Passwords do not match.', 'error')
             return redirect(url_for('staff_register'))
         
-        conn = sqlite3.connect('newdata.db')
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         
         cursor.execute('SELECT staff_id FROM staff WHERE staff_id = ? OR staff_email = ?', (employee_id, email))
@@ -243,7 +243,7 @@ def staff_register():
         finally:
             conn.close()
     
-    conn = sqlite3.connect('newdata.db')
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     
     cursor.execute('SELECT MAX(staff_id) FROM staff')
@@ -274,13 +274,13 @@ def submit_order():
         if not product_ids:
             print(f"DEBUG: No product_ids selected, re-rendering dashboard with error")
             flash('Please select at least one product for your order.', 'error')
-            conn = sqlite3.connect('newdata.db')
+            conn = sqlite3.connect(db_path)
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
             cursor.execute("""
                 SELECT co.order_id,
                        co.grc_items,
-                       l.loacation_name
+                       l.location_name
                 FROM cust_order AS co
                 LEFT JOIN location AS l
                   ON co.location_id = l.location_id
@@ -302,13 +302,13 @@ def submit_order():
                 qty = int(qty_str)
                 if qty < 1:
                     flash(f'Invalid quantity for product {pid}. Minimum is 1.', 'error')
-                    conn = sqlite3.connect('newdata.db')
+                    conn = sqlite3.connect(db_path)
                     conn.row_factory = sqlite3.Row
                     cursor = conn.cursor()
                     cursor.execute("""
                         SELECT co.order_id,
                                co.grc_items,
-                               l.loacation_name
+                               l.location_name
                         FROM cust_order AS co
                         LEFT JOIN location AS l
                           ON co.location_id = l.location_id
@@ -325,13 +325,13 @@ def submit_order():
             product_ids_int = list(product_quantities.keys())
         except ValueError:
             flash('Invalid product selection or quantity.', 'error')
-            conn = sqlite3.connect('newdata.db')
+            conn = sqlite3.connect(db_path)
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
             cursor.execute("""
                 SELECT co.order_id,
                        co.grc_items,
-                       l.loacation_name
+                       l.location_name
                 FROM cust_order AS co
                 LEFT JOIN location AS l
                   ON co.location_id = l.location_id
@@ -345,7 +345,7 @@ def submit_order():
             conn.close()
             return render_template('Customer.html', user_name=session.get('user_name'), orders=orders, products=products)
 
-        conn = sqlite3.connect('newdata.db')
+        conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
@@ -366,7 +366,7 @@ def submit_order():
             desired_location_id = 1
 
         sql = f"""
-            SELECT l.location_id, l.loacation_name, ui.product_id, ui.quantity
+            SELECT l.location_id, l.location_name, ui.product_id, ui.quantity
             FROM location l
             JOIN update_inventory ui ON l.location_id = ui.location_id
             WHERE ui.product_id IN ({placeholders})
@@ -385,8 +385,8 @@ def submit_order():
         available_locations = []
         for loc_id, inv_map in location_inventory.items():
             if all(inv_map.get(pid, 0) >= product_quantities[pid] for pid in product_ids_int):
-                loc_row = cursor.execute('SELECT loacation_name FROM location WHERE location_id = ?', (loc_id,)).fetchone()
-                available_locations.append((loc_id, loc_row['loacation_name']))
+                loc_row = cursor.execute('SELECT location_name FROM location WHERE location_id = ?', (loc_id,)).fetchone()
+                available_locations.append((loc_id, loc_row['location_name']))
 
         location_id = desired_location_id
 
@@ -463,7 +463,7 @@ def delete_order(order_id):
     customer_id = session['user_id']
     
     try:
-        conn = sqlite3.connect('newdata.db')
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         
         cursor.execute('SELECT order_id FROM cust_order WHERE order_id = ? AND customer_id = ?', 
@@ -488,14 +488,18 @@ def delete_order(order_id):
 
 @app.route('/inventory')
 def inventory():
-    conn = sqlite3.connect('newdata.db')
+    if 'user_id' not in session or session.get('user_type') != 'staff':
+        flash('Please log in to access inventory.', 'warning')
+        return redirect(url_for('verify_staff'))
+    
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
     
     cursor.execute('''
         SELECT 
             l.location_id,
-            l.loacation_name,
+            l.location_name,
             np.product_id,
             np.product_name,
             c.category_name,
@@ -504,7 +508,7 @@ def inventory():
         CROSS JOIN new_product np
         LEFT JOIN categories c ON np.category_id = c.category_id
         LEFT JOIN update_inventory ui ON np.product_id = ui.product_id AND l.location_id = ui.location_id
-        GROUP BY l.location_id, l.loacation_name, np.product_id, np.product_name, c.category_name
+        GROUP BY l.location_id, l.location_name, np.product_id, np.product_name, c.category_name
         ORDER BY l.location_id, c.category_name, np.product_name
     ''')
     all_rows = cursor.fetchall()
@@ -514,7 +518,7 @@ def inventory():
         loc_id = row['location_id']
         if loc_id not in locations_inventory:
             locations_inventory[loc_id] = {
-                'location_name': row['loacation_name'],
+                'location_name': row['location_name'],
                 'products': []
             }
         locations_inventory[loc_id]['products'].append(row)
@@ -548,7 +552,7 @@ def add_product():
         max_qty = request.form.get('max-quantity')
         category = request.form.get('Categorie')
         
-        conn = sqlite3.connect('newdata.db')
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         
         try:
@@ -573,7 +577,7 @@ def add_product():
 
 @app.route('/view_inventory')
 def view_inventory():
-    conn = sqlite3.connect('newdata.db')
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     products = conn.execute(
         '''SELECT np.product_id AS sku,
@@ -591,16 +595,16 @@ def view_inventory():
 @app.route('/download_inventory_pdf')
 def download_inventory_pdf():
     try:
-        conn = sqlite3.connect('newdata.db')
+        conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
-        locations = cursor.execute('SELECT location_id, loacation_name FROM location ORDER BY location_id').fetchall()
+        locations = cursor.execute('SELECT location_id, location_name FROM location ORDER BY location_id').fetchall()
         
         cursor.execute('''
             SELECT 
                 l.location_id,
-                l.loacation_name,
+                l.location_name,
                 np.product_id,
                 np.product_name,
                 c.category_name,
@@ -609,7 +613,7 @@ def download_inventory_pdf():
             CROSS JOIN new_product np
             LEFT JOIN categories c ON np.category_id = c.category_id
             LEFT JOIN update_inventory ui ON np.product_id = ui.product_id AND l.location_id = ui.location_id
-            GROUP BY l.location_id, l.loacation_name, np.product_id, np.product_name, c.category_name
+            GROUP BY l.location_id, l.location_name, np.product_id, np.product_name, c.category_name
             ORDER BY l.location_id, c.category_name, np.product_name
         ''')
         location_products = cursor.fetchall()
@@ -673,7 +677,7 @@ def download_inventory_pdf():
 
         for loc in locations:
             loc_products = [p for p in location_products if p['location_id'] == loc['location_id']]
-            draw_table(pdf, col_widths, headers, loc_products, loc['loacation_name'])
+            draw_table(pdf, col_widths, headers, loc_products, loc['location_name'])
 
         pdf.set_font('Arial', 'B', 13)
         pdf.cell(0, 10, 'TOTAL INVENTORY (ALL LOCATIONS)', 0, 1)
@@ -722,7 +726,7 @@ def download_inventory_pdf():
 
 @app.route('/staff')
 def staff():
-    conn = sqlite3.connect('newdata.db')
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
@@ -748,7 +752,7 @@ def staff():
          SELECT b.backorder_id, b.order_id, b.product_id, np.product_name, 
              b.requested_qty, b.available_qty, b.shortage, b.status,
              c.cust_name, c.cust_surname, b.location_id, 
-             COALESCE(l.loacation_name, 'Not Specified') as loacation_name
+             COALESCE(l.location_name, 'Not Specified') as location_name
          FROM backorder b
          JOIN new_product np ON b.product_id = np.product_id
          JOIN cust_order co ON b.order_id = co.order_id
@@ -771,12 +775,16 @@ def staff():
 
 @app.route('/update_inventory', methods=['POST'])
 def update_inventory():
+    if 'user_id' not in session or session.get('user_type') != 'staff':
+        flash('Please log in as staff to update inventory.', 'warning')
+        return redirect(url_for('verify_staff'))
+    
     try:
         product_id = int(request.form.get('product_id'))
         quantity = int(request.form.get('quantity'))
         location_id = int(request.form.get('location'))
 
-        conn = sqlite3.connect('newdata.db')
+        conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
@@ -788,7 +796,7 @@ def update_inventory():
             INSERT INTO update_inventory (quantity, product_id, location_id, staff_id, category_id)
             VALUES (?, ?, ?, ?, ?)
             ''',
-            (quantity, product_id, location_id, 1, category_id)
+            (quantity, product_id, location_id, session.get('user_id', 1), category_id)
         )
 
         stock_to_allocate = quantity
@@ -851,7 +859,7 @@ def verify_staff():
         staff_id = request.form.get('staff-id')
         password = request.form.get('password')
         
-        conn = sqlite3.connect('newdata.db')
+        conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         
         cursor = conn.cursor()
