@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Staff Registration</title>
+    <link rel="stylesheet" href="{{ url_for('serve_root_styles') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="{{ url_for('home') }}" class="logo">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M7 4h-2a1 1 0 0 0 0 2h1.22l1.6 6.4a2 2 0 0 0 1.95 1.45h7.48a1 1 0 0 0 .97-.76l1.2-5.2a1 1 0 0 0-.97-1.24H8.7L8.2 4.2A1 1 0 0 0 7 4zm0 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                </svg>
+                <span class="logo-text">GrocerEase</span>
+            </a>
+            <nav class="nav-buttons">
+                <a href="{{ url_for('verify_staff') }}" class="nav-btn nav-btn--secondary">Login</a>
+                <a href="{{ url_for('staff_register') }}" class="nav-btn nav-btn--primary">Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="hero-content">
+                <div class="hero-copy">
+                    <h1>Become part of the team</h1>
+                    <p class="lead">Register as staff to manage inventory and keep our community supplied.</p>
+                </div>
+                <div class="hero-illustration" aria-hidden="true">
+                    <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" role="img"></svg>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>Staff Registration</h1>
+            <p>Complete the form below to register as a staff member. All fields are required.</p>
+
+            <form action="{{ url_for('staff_register') }}" method="post">
+                <!-- form fields stay unchanged -->
+                
+                <div>
+                    <label for="employee-id">Employee ID</label>
+                    <input type="text" id="employee-id" name="employee-id" required>
+                </div>
+
+                <div>
+                    <label for="name">First Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div>
+                    <label for="surname">Last Name</label>
+                    <input type="text" id="surname" name="surname" required>
+                </div>
+
+                <div>
+                    <label for="email">Work Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div>
+                    <label for="department">Department</label>
+                    <select id="department" name="department" required>
+                        <option value="">-- Select Department --</option>
+                        <option value="inventory">Inventory Management</option>
+                        <option value="sales">Sales</option>
+                        <option value="customer-service">Customer Service</option>
+                        <option value="logistics">Logistics</option>
+                        <option value="admin">Administration</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="position">Position</label>
+                    <input type="text" id="position" name="position" required>
+                </div>
+
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div>
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+
+                <div class="controls">
+                    <button type="submit">Register as Staff Member</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div class="back-to-home">
+        <a class="btn btn--danger" href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+</body>
+</html>

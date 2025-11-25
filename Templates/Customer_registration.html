@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Customer Registration</title>
+    <link rel="stylesheet" href="{{ url_for('serve_root_styles') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="{{ url_for('home') }}" class="logo">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M7 4h-2a1 1 0 0 0 0 2h1.22l1.6 6.4a2 2 0 0 0 1.95 1.45h7.48a1 1 0 0 0 .97-.76l1.2-5.2a1 1 0 0 0-.97-1.24H8.7L8.2 4.2A1 1 0 0 0 7 4zm0 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                </svg>
+                <span class="logo-text">GrocerEase</span>
+            </a>
+            <nav class="nav-buttons">
+                <a href="{{ url_for('login') }}" class="nav-btn nav-btn--secondary">Login</a>
+                <a href="{{ url_for('register') }}" class="nav-btn nav-btn--primary">Register</a>
+                <a href="{{ url_for('verify_staff') }}" class="nav-btn nav-btn--secondary">Staff Portal</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+                <div class="flash flash--{{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <section class="page-hero">
+            <div class="hero-content">
+                <div class="hero-copy">
+                    <h1>Join GrocerEase</h1>
+                    <p class="lead">Create an account to receive personalised recommendations and faster checkout.</p>
+                </div>
+                <div class="hero-illustration" aria-hidden="true">
+                    <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" role="img">
+                        <rect x="12" y="18" width="96" height="54" rx="8" fill="#fbfdff" stroke="#dbeafe"/>
+                        <circle cx="40" cy="45" r="10" fill="#60a5fa"/>
+                        <rect x="60" y="36" width="36" height="6" rx="3" fill="#94a3b8"/>
+                        <rect x="60" y="48" width="28" height="6" rx="3" fill="#94a3b8"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <h1>Customer Registration</h1>
+        <p>Please enter your information to create a new account.</p>
+
+        <section>
+            <h2>Create your account</h2>
+
+            <form action="{{ url_for('register') }}" method="post">
+                <div class="form-field">
+                    <input type="text" id="name" name="name" placeholder=" " required>
+                    <label for="name">First Name</label>
+                </div>
+
+                <div class="form-field">
+                    <input type="text" id="surname" name="surname" placeholder=" " required>
+                    <label for="surname">Last Name</label>
+                </div>
+
+                <div class="form-field">
+                    <input type="email" id="email" name="email" placeholder=" " required>
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="form-field">
+                    <input type="text" id="location" name="location" placeholder=" " required>
+                    <label for="location">Home Location</label>
+                </div>
+
+                <div class="form-field">
+                    <input type="password" id="password" name="password" placeholder=" " required>
+                    <label for="password">Password</label>
+                </div>
+
+                <div class="form-field">
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder=" " required>
+                    <label for="confirm-password">Confirm Password</label>
+                </div>
+
+                <div class="controls">
+                    <button type="submit">Proceed to Customer Portal</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div class="back-to-home">
+        <a class="btn btn--danger" href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+</body>
+</html>

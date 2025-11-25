@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('serve_root_styles') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="{{ url_for('home') }}" class="logo">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M7 4h-2a1 1 0 0 0 0 2h1.22l1.6 6.4a2 2 0 0 0 1.95 1.45h7.48a1 1 0 0 0 .97-.76l1.2-5.2a1 1 0 0 0-.97-1.24H8.7L8.2 4.2A1 1 0 0 0 7 4zm0 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                </svg>
+                <span class="logo-text">GrocerEase</span>
+            </a>
+            <nav class="nav-buttons">
+                <a href="{{ url_for('inventory') }}" class="nav-btn nav-btn--secondary">Inventory</a>
+                <a href="{{ url_for('logout') }}" class="nav-btn nav-btn--secondary">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="hero-content">
+                <div class="hero-copy">
+                    <h1>Staff Dashboard</h1>
+                    <p class="lead">Quick tools to manage inventory, process orders and help customers efficiently.</p>
+                </div>
+                <div class="hero-illustration" aria-hidden="true">
+                    <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" role="img"></svg>
+                </div>
+            </div>
+        </section>
+
+        <p>Staff sign in to manage orders, inventory and customer issues.</p>
+
+        <section>
+            <h2>Update Inventory</h2>
+            <p>This form is a simple placeholder for updating inventory items.</p>
+
+            <form action="{{ url_for('update_inventory') }}" method="post">
+                <label for="product_id">Product ID</label>
+                <input id="product_id" name="product_id" type="number" required />
+
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="">-- Select a category --</option>
+                    <option value="1">Meat</option>
+                    <option value="2">Poultry</option>
+                    <option value="3">Fish</option>
+                    <option value="4">Produce</option>
+                    <option value="5">Dairy</option>
+                    <option value="6">Bakery</option>
+                    <option value="7">Starch</option>
+                    <option value="8">Beverages</option>
+                    <option value="9">Cleaning Supplies</option>
+                    <option value="10">Electronics</option>
+                    <option value="11">Other</option>
+                </select>
+
+                <label for="quantity">Quantity</label>
+                <input id="quantity" name="quantity" type="number" min="0" required />
+
+                <label for="location">Location</label>
+                <select id="location" name="location" required>
+                    <option value="">-- Select a location --</option>
+                    <option value="1">Centurion</option>
+                    <option value="2">Hatfield</option>
+                    <option value="3">Kempton Park</option>
+                    <option value="4">Midrand</option>
+                    <option value="5">Sandton</option>
+                </select>
+
+                <div class="controls">
+                    <button type="submit">Update Inventory</button>
+                </div>
+            </form>
+        </section>
+
+        <section>
+            <p><a class="btn btn--goodnews" href="{{ url_for('inventory') }}">View Inventory</a></p>
+        </section>
+
+        <section>
+            <p><a class="btn btn--new" href="{{ url_for('add_product') }}">Add Product</a></p>
+        </section>
+    </main>
+
+    <div class="back-to-home">
+        <a class="btn btn--danger" href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+
+</body>
+</html>

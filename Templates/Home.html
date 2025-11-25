@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('serve_root_styles') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="{{ url_for('home') }}" class="logo">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M7 4h-2a1 1 0 0 0 0 2h1.22l1.6 6.4a2 2 0 0 0 1.95 1.45h7.48a1 1 0 0 0 .97-.76l1.2-5.2a1 1 0 0 0-.97-1.24H8.7L8.2 4.2A1 1 0 0 0 7 4zm0 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                </svg>
+                <span class="logo-text">GrocerEase</span>
+            </a>
+            <nav class="nav-buttons">
+                <a href="{{ url_for('login') }}" class="nav-btn nav-btn--secondary">Customer Login</a>
+                <a href="{{ url_for('register') }}" class="nav-btn nav-btn--secondary">Customer Register</a>
+                <a href="{{ url_for('verify_staff') }}" class="nav-btn nav-btn--secondary">Staff Login</a>
+                <a href="{{ url_for('staff_register') }}" class="nav-btn nav-btn--primary">Staff Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <p class="badge">Fresh · Local · Fast</p>
+                    <h1>GrocerEase — Your neighbourhood grocery, delivered</h1>
+                    <p class="lead">Shop fresh produce, pantry staples and daily essentials. Simple checkout, same-day delivery in select areas.</p>
+                    <div class="hero-ctas">
+                        <a class="btn" href="{{ url_for('login') }}">Shop Now</a>
+                        <a class="btn btn--secondary-ghost" href="{{ url_for('register') }}">Create Account</a>
+                    </div>
+                </div>
+                <div class="hero-illustration" aria-hidden="true">
+                    <!-- SVG unchanged -->
+                    <svg viewBox="0 0 520 380"></svg>
+                </div>
+            </div>
+        </section>
+
+        <h2>Welcome to GrocerEase</h2>
+        <p>Please choose whether you're a customer or a staff member.</p>
+
+        <div class="choices" role="list">
+            <article class="card" role="listitem">
+                <h2>Customer</h2>
+                <p>Browse products, view your account and place orders.</p>
+                <p><a href="{{ url_for('login') }}">Continue as Customer</a></p>
+            </article>
+
+            <article class="card" role="listitem">
+                <h2>Staff</h2>
+                <p>Sign in to access the staff dashboard, manage orders and inventory.</p>
+                <p><a href="{{ url_for('verify_staff') }}">Continue as Staff</a></p>
+            </article>
+        </div>
+    </main>
+</body>
+</html>
