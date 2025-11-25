@@ -49,34 +49,69 @@
 
         <section>
             <h2>Current Inventory</h2>
-            <div class="inventory-table">
-                <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
-                    <thead>
-                        <tr style="background-color: #f3f4f6;">
-                            <th style="padding: 12px; text-align: left; border: 1px solid #000000;">Product ID</th>
-                            <th style="padding: 12px; text-align: left; border: 1px solid #000000;">Product Name</th>
-                            <th style="padding: 12px; text-align: left; border: 1px solid #000000;">Category</th>
-                            <th style="padding: 12px; text-align: right; border: 1px solid #000000;">Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% if products %}
-                            {% for product in products %}
-                            <tr>
-                                <td style="padding: 12px; border: 1px solid #000000;">{{ product[0] }}</td>
-                                <td style="padding: 12px; border: 1px solid #000000;">{{ product[1] }}</td>
-                                <td style="padding: 12px; border: 1px solid #000000;">{{ product[2] }}</td>
-                                <td style="padding: 12px; text-align: right; border: 1px solid #000000;">{{ product[3] }}</td>
+            
+            <!-- Display inventory per location -->
+            {% for loc_id in locations_inventory|sort %}
+                {% set loc_data = locations_inventory[loc_id] %}
+                <section style="margin-top: 2rem; padding: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <h2 style="color: #1f2937;">{{ loc_data['location_name'] }}</h2>
+                    <div class="inventory-table">
+                        <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+                            <thead>
+                                <tr style="background-color: #f3f4f6;">
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #000000;">Product ID</th>
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #000000;">Product Name</th>
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #000000;">Category</th>
+                                    <th style="padding: 12px; text-align: right; border: 1px solid #000000;">Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in loc_data['products'] %}
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #000000;">{{ product['product_id'] }}</td>
+                                    <td style="padding: 12px; border: 1px solid #000000;">{{ product['product_name'] }}</td>
+                                    <td style="padding: 12px; border: 1px solid #000000;">{{ product['category_name'] }}</td>
+                                    <td style="padding: 12px; text-align: right; border: 1px solid #000000; {% if product['quantity'] < 10 %}background-color: #ffa500;{% endif %}">{{ product['quantity'] }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            {% endfor %}
+
+            <!-- Display totals across all locations -->
+            <section style="margin-top: 2rem; padding: 1rem; border: 2px solid #059669; border-radius: 4px; background-color: #f0fdf4;">
+                <h2 style="color: #059669;">Total Inventory (All Locations)</h2>
+                <div class="inventory-table">
+                    <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+                        <thead>
+                            <tr style="background-color: #d1fae5;">
+                                <th style="padding: 12px; text-align: left; border: 1px solid #059669;">Product ID</th>
+                                <th style="padding: 12px; text-align: left; border: 1px solid #059669;">Product Name</th>
+                                <th style="padding: 12px; text-align: left; border: 1px solid #059669;">Category</th>
+                                <th style="padding: 12px; text-align: right; border: 1px solid #059669;">Total Quantity</th>
                             </tr>
-                            {% endfor %}
-                        {% else %}
-                            <tr>
-                                <td colspan="4" style="padding: 12px; text-align: center; border: 1px solid #000000;">No products found in inventory</td>
-                            </tr>
-                        {% endif %}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {% if totals %}
+                                {% for product in totals %}
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #059669;">{{ product[0] }}</td>
+                                    <td style="padding: 12px; border: 1px solid #059669;">{{ product[1] }}</td>
+                                    <td style="padding: 12px; border: 1px solid #059669;">{{ product[2] }}</td>
+                                    <td style="padding: 12px; text-align: right; border: 1px solid #059669; {% if product[3] < 10 %}background-color: #ffa500;{% endif %}">{{ product[3] }}</td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="4" style="padding: 12px; text-align: center; border: 1px solid #059669;">No products found in inventory</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </section>
         
         <section>
