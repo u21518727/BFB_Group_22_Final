@@ -1,19 +1,18 @@
-/* styles.css - Modern E-commerce stylesheet */
 :root {
-  /* Color scheme */
+
   --bg: #f8fafc;
-  /* modern soft page gradient (warm + cool) */
-  --bg-gradient-start: #f3f8ff; /* pale blue */
-  --bg-gradient-mid: #f7fff6;   /* pale mint */
-  --bg-gradient-end: #fbf8ff;   /* pale lavender */
+
+  --bg-gradient-start: #f3f8ff; 
+  --bg-gradient-mid: #f7fff6;   
+  --bg-gradient-end: #fbf8ff;   
   --page-bg: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.06), transparent 15%), linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
   --card: linear-gradient(180deg, #ffffff, #fbfdff);
   --text: #0f1724;
   --text-light: #425266;
   --muted: #7b8896;
-  /* Accent gradient - vibrant cyan to indigo */
-  --accent-start: #06b6d4; /* cyan */
-  --accent-end: #7c3aed;   /* violet */
+
+  --accent-start: #06b6d4;
+  --accent-end: #7c3aed;  
   --accent: #06b6d4;
   --accent-700: #0ea5b5;
   --accent-light: rgba(6,182,212,0.12);
@@ -22,19 +21,19 @@
   --error: #ef4444;
   --border: #e2e8f0;
   
-  /* Layout */
+  
   --radius-sm: 6px;
   --radius: 12px;
   --radius-lg: 16px;
   --max-width: 1200px;
   --container-padding: 24px;
   
-  /* Effects */
+  
   --shadow-sm: 0 6px 18px rgba(15,23,42,0.06);
   --shadow: 0 14px 36px rgba(15,23,42,0.08);
   --shadow-lg: 0 20px 50px rgba(15,23,42,0.12);
   
-  /* Transitions */
+  
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -51,7 +50,6 @@ body{
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Main navigation header */
 .site-header {
   background: rgba(255,255,255,0.85);
   box-shadow: var(--shadow-sm);
@@ -91,7 +89,6 @@ body{
     color: var(--accent);
 }
 
-/* Logo icon (trolley) styles */
 .logo-icon {
   width: 28px;
   height: 28px;
@@ -152,7 +149,6 @@ main {
     padding: 0 var(--container-padding);
 }
 
-/* Hero section */
 .hero {
   margin-top: 1.5rem;
   background: linear-gradient(180deg, rgba(6,182,212,0.06), rgba(124,58,237,0.03));
@@ -192,7 +188,6 @@ main {
 .hero-illustration{flex:0 0 360px}
 .hero-illustration svg{width:100%;height:auto;border-radius:12px}
 
-/* Floating animation for hero illustrations */
 @keyframes float {
   0% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
@@ -200,11 +195,9 @@ main {
 }
 .hero-illustration svg { animation: float 6s ease-in-out infinite; transform-origin: center; }
 
-/* Button micro-interactions (enhanced) */
 .btn { transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition); }
 .btn:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(59,130,246,0.12); }
 
-/* Floating labels for forms */
 .form-field { position: relative; margin-bottom: 1rem; }
 .form-field input,
 .form-field textarea,
@@ -221,7 +214,6 @@ main {
   transition: transform var(--transition), color var(--transition), font-size var(--transition), top var(--transition);
 }
 
-/* float label when field focused or has content */
 .form-field:focus-within label,
 .form-field input:not(:placeholder-shown) + label,
 .form-field textarea:not(:placeholder-shown) + label {
@@ -229,11 +221,8 @@ main {
   color: var(--accent);
 }
 
-/* smaller label when floated */
 .form-field:focus-within label { font-size: 0.85rem; }
 
-
-/* Generic page hero / panel styles used across site */
 .page-hero {
   margin: 1.5rem 0;
   padding: 1.5rem;
@@ -258,7 +247,6 @@ main {
   .hero-illustration, .page-hero .hero-illustration{flex:1 1 auto}
 }
 
-/* Inventory header layout: title at left, actions (e.g., Download Pdf) at right */
 .inventory-header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .inventory-title h1{margin:0}
 .inventory-actions{display:flex;align-items:center;gap:.5rem}
@@ -270,7 +258,6 @@ header p{margin:0 0 .75rem;color:var(--muted)}
 nav a{color:var(--accent);text-decoration:none;margin-right:1rem;font-weight:600}
 nav a:hover{color:var(--accent-700);text-decoration:underline}
 
-/* Cards / Product Grid */
 .choices {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -320,15 +307,14 @@ nav a:hover{color:var(--accent-700);text-decoration:underline}
   color: var(--accent-700);
 }
 
-/* Button micro-interactions */
 .btn {transition: transform var(--transition), box-shadow var(--transition)}
 .btn:active{transform:translateY(1px)}
 .nav-btn{transition:transform var(--transition), box-shadow var(--transition)}
 
-/* card image placeholder */
+
 .card .card-image{height:140px;border-radius:8px;background:linear-gradient(180deg,#f1f5f9,#eaf2ff);margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
 
-/* Forms */
+
 form {
   margin-top: 1.5rem;
   max-width: 560px;
@@ -400,12 +386,10 @@ button:active {
   transform: scale(0.98);
 }
 
-/* Buttons as links (use on anchors) */
 .btn{display:inline-block;text-decoration:none;padding:.55rem .85rem;border-radius:8px;font-weight:700;color:#fff;background:var(--accent)}
 .btn:hover{background:var(--accent-700)}
 .btn:focus{outline:3px solid rgba(11,105,255,0.12);outline-offset:2px}
 
-/* Danger / red variant */
 .btn--danger{background:#e11d48}
 .btn--danger:hover{background:#be123c}
 
@@ -424,10 +408,8 @@ button:active {
 .btn--new{background:#ffa114}
 .btn--new:hover{background:#fb923c}
 
-/* Controls spacing for form buttons */
 .controls{margin-top:0.75rem}
 
-/* Footer */
 footer {
   margin-top: 3rem;
   padding: 2rem var(--container-padding);
@@ -467,7 +449,6 @@ footer .copyright {
   margin: 2rem 0;
 }
 
-/* Responsiveness */
 @media (max-width: 1024px) {
   :root {
     --container-padding: 20px;
@@ -551,10 +532,7 @@ footer .copyright {
   }
 }
 
-/* Accessibility helpers */
 a:focus, button:focus, input:focus, textarea:focus{outline-offset:2px}
-
-/* Add these to styles.css */
 
 .flash-messages {
   margin-bottom: 1rem;
