@@ -280,6 +280,15 @@ The database includes sample data for testing:
 2. Open `Home.html` in your web browser
 3. Navigate through the different pages to see customer and staff views.
 
+## Basic login values
+
+- Customer email: wandre.nel@example.com
+- Customer password: pass123
+- Staff id: 1
+- Staff password: invpass1
+
+- Can also create new customer or staff to login.
+
 ## Technologies Used
 
 - **HTML5**: Structure and forms
