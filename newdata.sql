@@ -33,7 +33,7 @@ CREATE TABLE categories (
 
 CREATE TABLE location (
     location_id INTEGER PRIMARY KEY,
-    loacation_name TEXT
+    location_name TEXT
 );
 
 CREATE TABLE customer (
